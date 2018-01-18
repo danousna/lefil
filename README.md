@@ -1,6 +1,8 @@
-Coup de jeune du Fil
+## Configuration et mise en place de la base de données
 
-Besoin d'ajouter le fichier dbconfig.php dans scripts/ afin de mettre en place la BDD : 
+Créer une base de données sous SQL puis importer le dump SQL de la BDD : `bdd.sql`. 
+
+Besoin d'ajouter le fichier `dbconfig.php` dans `scripts/` afin de mettre en place la BDD et remplacer les quotes vides par les identifiants de la BDD mysql.
 
 ```php
 <?php
