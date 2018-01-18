@@ -1,3 +1,14 @@
+# Le coup de jeune du Fil
+
+## Avancée du projet
+
+Le choix actuel des technologies :
+
+- Frontend : Bootstrap + Jquery.
+- Backend : Custom PHP, pas de framework.
+
+A discuter.
+
 ## Configuration et mise en place de la base de données
 
 Créer une base de données sous SQL puis importer le dump SQL de la BDD : `bdd.sql`. 
