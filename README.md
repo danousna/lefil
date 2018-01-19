@@ -2,14 +2,14 @@
 
 ## Avancée du projet
 
-Le choix actuel des technologies :
+### Le choix actuel des technologies :
 
 - Frontend : Bootstrap + Jquery.
 - Backend : Custom PHP, pas de framework.
 
 A discuter.
 
-Ce qui a été fait :
+### Ce qui a été fait :
 
 - Système de connexion.
 - Système d'inscription par le CAS.
@@ -17,13 +17,13 @@ Ce qui a été fait :
 - Ecrire des articles riches (images, mise en page etc...) (mise en place de tinyMCE).
 - Page principale avec listing des articles
 
-Des petits trucs pas encore finalisés :
+### Des petits trucs pas encore finalisés :
 
 - Modifier un article
 - Listing des articles sur la page principale doit respecter date.
 - ... (j'en oublie surement)
 
-Des gros trucs :
+### Des gros trucs :
 
 - Mettre en place les commentaires
 - Mettre en place une hiérarchie des membres inscrits (membre qui peut commenter et soumettre un article, membre de l'association qui peut publier etc...)
