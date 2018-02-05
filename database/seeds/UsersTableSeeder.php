@@ -15,15 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $natan = User::create([
-            'name' => 'Natan Danous',
-            'username' => 'danousna',
-            'email' => 'natan.danous@gmail.com',
-            'password' => bcrypt('natandanous'),
-        ]);
-
-        $natan->assignRole('admin');
-
         $user = User::create([
             'name' => 'Jérémy Pointel',
             'username' => 'jpointel',
