@@ -5,7 +5,7 @@
 ### Le choix actuel des technologies :
 
 - Frontend : Bootstrap + Jquery.
-- Backend : Custom PHP, pas de framework.
+- Backend : Laravel.
 
 A discuter.
 
