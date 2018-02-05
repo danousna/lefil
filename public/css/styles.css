@@ -1,0 +1,125 @@
+body {
+    font-size: 20px;
+    color: #212529;
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+    margin-top: 46px;
+}
+
+p {
+    line-height: 1.5;
+    margin: 30px 0;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #212529;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+a:focus, a:hover {
+    color: #0085A1;
+    text-decoration: none !important;
+}
+
+blockquote {
+    font-style: italic;
+    color: #868e96;
+}
+
+.section-heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 60px;
+}
+
+.caption {
+    font-size: 14px;
+    font-style: italic;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.active {
+    color: white !important;
+}
+
+.form-control:hover {
+    border-color: #666;
+}
+
+.form-control:focus {
+    border-color: #576CA8;
+    box-shadow: none;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 12px 20px;
+    border: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: #246287;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    color: #fff;
+    background-color: #0F537B !important;
+}
+
+.btn-lg {
+    font-size: 16px;
+    padding: 25px 35px;
+}
+
+.btn-sm {
+    font-size: 12px;
+    padding: 10px 16px;
+}
+
+/*Added by me*/
+
+.bg-bubble {
+    background-color: #F6F6F6;
+}
+
+.div-bubble {
+    background-color: white;
+    border-radius: .75rem;
+}
+
+.normal-link {
+    color: #ccc;
+}
+
+.normal-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.table > tbody > tr > * {
+    vertical-align: middle;
+}
+
+.table {
+    margin-bottom: 0;
+}
+

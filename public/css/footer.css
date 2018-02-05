@@ -1,0 +1,16 @@
+footer {
+    color: #A9A9A9;
+    line-height: 1;
+}
+
+footer a {
+    color: #A9A9A9;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+footer .about {
+    font-size: 0.9rem;
+}
