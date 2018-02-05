@@ -2,14 +2,16 @@
 
 ## Avancée du projet
 
-### Le choix actuel des technologies :
+### Les technologies utilisées :
 
 - Frontend : Bootstrap + Jquery.
 - Backend : On passe à Laravel 5.5.
 
 ## Installation
 
-Le projet fonctionne sous Laravel 5.5. Pour l'installation, il faut :
+Il faut tout d'abord un serveur Apache ainsi que mysql installés.
+
+Afin d'installer Laravel il faut que votre version PHP remplissent ces conditions :
 
 - PHP >= 7.0.0
 - OpenSSL PHP Extension
@@ -17,8 +19,6 @@ Le projet fonctionne sous Laravel 5.5. Pour l'installation, il faut :
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 - XML PHP Extension
-
-(En plus d'apache, mysql)
 
 Se placer dans le répertoire du projet.
 
@@ -34,4 +34,40 @@ Vous pouvez ensuite executer la commande suivante pour mettre en place toutes le
 
 `php artisan migrate`
 
-Optionnel : `php artisan db:seed` qui permettra d'avoir des jeux de données déjà présentes par défaut.
+Optionnel : 
+
+Dans le répertoire `database/seeds/`, créer un fichier appelé `AdminsSeeder.php` et y copier le code suivant en remplacant les informations de compte par celle que vous voulez.
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\User;
+use App\Category;
+
+class AdminsSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $admin = User::create([
+            'name' => 'NOM',
+            'username' => 'USERNAME',
+            'email' => 'EMAIL',
+            'password' => bcrypt('PASSWORD'),
+        ]);
+
+        $admin->assignRole('admin');
+    }
+}
+```
+
+Vous pouvez maintenant executer cette commande :
+
+`php artisan db:seed` qui permettra d'avoir des jeux de données déjà présentes par défaut.
