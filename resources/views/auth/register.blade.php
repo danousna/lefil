@@ -18,17 +18,13 @@
 
                 <div class="form-group">
                     <label for="name">Nom</label>
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="name" type="text" class="form-control" name="name" value="{{ (old('name') == '') ? $name : old('name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
-                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    <input id="username" type="text" class="form-control" name="username" value="{{ (old('username') == '') ? $username : old('username') }}" required>
+                    <small id="usernameHelp" class="form-text text-muted">Votre nom d'utilisateur sera votre nom d'auteur, il sera visible par tous.</small>
                 </div>
 
                 <div class="form-group">

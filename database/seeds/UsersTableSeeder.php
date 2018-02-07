@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Jérémy Pointel',
             'username' => 'jpointel',
-            'email' => 'jeremy.pointel@gmail.com',
+            'email' => 'jeremy.pointel@etu.utc.fr',
             'password' => bcrypt('password'),
         ]);
 
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Sylvain Thimon',
             'username' => 'thimonsy',
-            'email' => 'sylvain.thimon@gmail.com',
+            'email' => 'sylvain.thimon@etu.utc.fr',
             'password' => bcrypt('password'),
         ]);
 
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Sophie Grateau',
             'username' => 'sofil',
-            'email' => 'sophie.grateau@gmail.com',
+            'email' => 'sophie.grateau@etu.utc.fr',
             'password' => bcrypt('password'),
         ]);
 
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Valentin Le Gauche',
             'username' => 'Valentin',
-            'email' => 'valentin.legauche@gmail.com',
+            'email' => 'valentin.legauche@etu.utc.fr',
             'password' => bcrypt('password'),
         ]);
 
@@ -54,7 +54,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Example',
             'username' => 'example',
-            'email' => 'example@example.com',
+            'email' => 'example@etu.utc.fr',
             'password' => bcrypt('password'),
         ]);
 
