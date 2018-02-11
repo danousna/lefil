@@ -44,11 +44,30 @@
     height: 28px;
 }
 .dropdown-menu {
-    border-radius: .25rem;
+    border-radius: .15rem;
     min-width: 250px;
+    padding: 0;
+    top: 29px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .dropdown-toggle {
     outline: none !important;
     box-shadow: none;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: .5rem 1rem;
+    font-weight: 300;
+}
+
+.dropdown-menu .dropdown-divider {
+    margin: 0;
+}
+
+.dropdown-menu .dropdown-header {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    color: black;
 }

@@ -67,8 +67,8 @@ header.masthead .hero {
     background-color: white;
     border-radius: 1.2rem;
 
+    background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
 }
 
 header.masthead .hero::after {

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
                 <div class="post-heading text-center">
-                    <h1 class="display-3">{{ $article->title }}</h1>
+                    <h1 style="font-size: 3rem;">{{ $article->title }}</h1>
                 </div>
             </div>
         </div>
@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
-            {{ $article->body }}
+        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4 article">
+            {!! $article->body !!}
         </div>
     </div>
 </div>

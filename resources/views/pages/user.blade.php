@@ -10,7 +10,7 @@
         <div class="row">
             <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
                 <div class="post-heading text-center">
-                    <h1 class="display-3">{{ $user->username }}</h1>
+                    <h1 style="font-size: 3rem;">{{ $user->username }}</h1>
                 </div>
             </div>
         </div>

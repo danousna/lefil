@@ -7,11 +7,12 @@ use App\User;
 use App\Article;
 use App\Category;
 use Session;
+use Parsedown;
 
 class PagesController extends Controller
 {
     public function getIndex() {
-        $articles = Article::orderBy('id', 'desc')->paginate(10);
+        $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(10);
         return view('pages.welcome')->withArticles($articles);
     }
 
@@ -24,20 +25,29 @@ class PagesController extends Controller
     }
 
     public function getArticle($year, $month, $day, $slug) {
-        $article = Article::where('slug', $slug)->first();
+        $article = Article::where('status', 'published')->where('slug', $slug)->first();
+        
+        if (!is_object($article)) {
+            Session::flash('error', "Ce lien ne correspond à aucun article.");
+            return redirect('/');
+        }
+
         $article_date = explode('-', substr($article->created_at, 0, 10));
 
         if ($year == $article_date[0] && $month == $article_date[1] && $day == $article_date[2]) {
+            // Parse the markdown to html.
+            $Parsedown = new Parsedown();
+            $article->body = $Parsedown->text($article->body);
             return view('pages.article')->withArticle($article);
         } else {
-            Session::flash('error', "Ce lien ne correspond à aucun article. Vous avez été redirigé à l'accueil.");
+            Session::flash('error', "Ce lien ne correspond à aucun article.");
             return redirect('/');
         }
     }
 
     public function getCategory($id) {
         $category = Category::find($id);
-        $articlesOfCategory = $category->articles;
+        $articlesOfCategory = $category->articles->where('status', 'published');
         return view('pages.category')->withCategory($category)->withArticles($articlesOfCategory);
     }
 
