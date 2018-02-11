@@ -40,6 +40,10 @@ header.masthead .post {
     color: white;
 }
 
+.article {
+    font-size: 18px;
+}
+
 .article h1,
 .article h2,
 .article h3 {
@@ -66,4 +70,9 @@ header.masthead .post {
 .article table td, .article table th {
     padding: 5px 10px;
     border: 1px solid gray;
+}
+
+.article img {
+    width: 100% !important;
+    border-radius: .75rem;
 }
