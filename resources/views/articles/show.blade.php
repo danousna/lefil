@@ -30,8 +30,8 @@
         </div>
     </div>
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
-            {{ $article->body }}
+        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4 article">
+            {!! $article->body !!}
         </div>
     </div>
 </div>

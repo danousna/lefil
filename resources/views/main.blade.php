@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        @include('partials._head')        
+        @include('partials._head')
+
+        @yield('css')
+               
     </head>
     <body>
         

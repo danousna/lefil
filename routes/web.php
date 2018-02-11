@@ -43,9 +43,6 @@ Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotP
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-// CAS
-// Route::get('register', 'CasController');
-
 // Users
 Route::resource('users', 'UserController');
 
@@ -60,6 +57,7 @@ Route::resource('account', 'AccountController');
 
 // Articles
 Route::resource('articles', 'ArticleController');
+Route::get('articles/{id}/publish', 'ArticleController@publish')->name('articles.publish');
 
 // Categories
 Route::resource('categories', 'CategoryController');

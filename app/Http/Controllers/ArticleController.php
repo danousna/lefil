@@ -10,6 +10,7 @@ use App\Category;
 use App\User;
 use Session;
 use Auth;
+use Parsedown;
 
 class ArticleController extends Controller
 {
@@ -36,6 +37,7 @@ class ArticleController extends Controller
     public function create()
     {
         $user = User::find(Auth::user()->id);
+        
         return view('articles.create')->withUser($user);
     }
 
@@ -85,6 +87,9 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         if ($article->user_id == Auth::user()->id) {
+            // Parse the markdown to html.
+            $Parsedown = new Parsedown();
+            $article->body = $Parsedown->text($article->body);
             return view('articles.show')->withArticle($article);
         } else {
             $date = explode('-', substr($article->created_at, 0, 10));
@@ -168,6 +173,21 @@ class ArticleController extends Controller
             return redirect()->route('articles.index');
         } else {
             Session::flash('error', 'Vous ne pouvez pas supprimer cet article');
+            return redirect('/');
+        }
+    }
+
+    public function publish($id) {
+        $article = Article::find($id);
+
+        if ($article->user_id == Auth::user()->id) {
+            $article->status = 'published';
+            $article->save();
+            
+            Session::flash('success', 'Article publié');
+            return redirect()->route('articles.show', $id);
+        } else {
+            Session::flash('error', 'Vous ne pouvez pas publier cet article');
             return redirect('/');
         }
     }

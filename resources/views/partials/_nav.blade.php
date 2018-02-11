@@ -32,25 +32,20 @@
                         <a class="nav-link {{ Request::is('account') ? "active" : "" }}" href="/account">Mon Compte</a>
                     </li>
 
-                    @hasanyrole('admin|president|member')
+                    @hasanyrole('admin|president')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gestion</a>
                             <div class="dropdown-menu">
                                 
-                                @hasanyrole('admin|president|member')
-                                    <a class="dropdown-item" href="/publish"><i class="fa fa-fw fa-file-text-o"></i> Publication</a>
-                                @endhasanyrole
-
-                                @hasanyrole('admin|president')
-                                    <a class="dropdown-item" href="/categories"><i class="fa fa-fw fa-list-alt"></i> Rubriques</a>
-                                @endhasanyrole
+                                <h6 class="dropdown-header">Gestion des contenus</h6>
+                                <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
 
                                 @role('admin')
                                     <div class="dropdown-divider"></div>
-                                    <h6 class="dropdown-header">Gestion du site :</h6>
-                                    <a class="dropdown-item" href="/users"><i class="fa fa-fw fa-user-o"> </i> Utilisateurs</a>
-                                    <a class="dropdown-item" href="/permissions"><i class="fa fa-fw fa-check-square-o"></i> Permissions</a>
-                                    <a class="dropdown-item" href="/roles"><i class="fa fa-fw fa-unlock-alt"></i> Rôles</a>
+                                    <h6 class="dropdown-header">Gestion du site</h6>
+                                    <a class="dropdown-item" href="/users"><i class="fas fa-users fa-fw"> </i> Utilisateurs</a>
+                                    <a class="dropdown-item" href="/permissions"><i class="far fa-check-square fa-fw"></i> Permissions</a>
+                                    <a class="dropdown-item" href="/roles"><i class="fas fa-user fa-fw"></i> Rôles</a>
                                 @endrole
 
                             </div>
