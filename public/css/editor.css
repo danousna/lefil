@@ -84,6 +84,7 @@
     border-top: none;
     border-bottom: none;
     padding: 0 10px;
+    font-size: 18px;
 }
 
 .CodeMirror h1,
@@ -106,10 +107,13 @@
 }
 
 .CodeMirror p {
-    font-size: 20px;
     margin: 10px 0;
 }
 
 .CodeMirror code {
     font-size: 17px;
+}
+
+.CodeMirror img {
+    width: 100% !important;
 }
