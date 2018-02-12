@@ -36,7 +36,7 @@ Vous pouvez ensuite executer la commande suivante pour mettre en place toutes le
 
 Optionnel : 
 
-Dans le répertoire `database/seeds/`, créer un fichier appelé `AdminsSeeder.php` et y copier le code suivant en remplacant les informations de compte par celle que vous voulez.
+Dans le répertoire `database/seeds/`, créer un fichier appelé `AdminsSeeder.php` et copier le code suivant en remplacant les informations de compte par celle que vous voulez.
 
 ```php
 <?php
