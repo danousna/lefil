@@ -22,6 +22,10 @@ Afin d'installer Laravel il faut que votre version PHP remplissent ces condition
 
 Se placer dans le répertoire du projet.
 
+Installer les dépendances :
+
+`composer install`
+
 Créer un fichier `.env` et coller dans celui-ci le contenu du fichier `.env.example`.
 
 Il faut ensuite générer une nouvelle clé pour l'application grace à la commande : 

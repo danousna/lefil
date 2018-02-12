@@ -11,6 +11,8 @@ use App\User;
 use Session;
 use Auth;
 use Parsedown;
+use Storage;
+use File;
 
 class ArticleController extends Controller
 {
@@ -52,6 +54,7 @@ class ArticleController extends Controller
         // Validate the data.
         $this->validate($request, array(
             'title'         => 'required|max:255',
+            'image'         => 'required|image|mimes:jpeg,jpg,png,gif,svg',
             'category_id'   => [
                                 'required',
                                 'integer',
@@ -68,6 +71,10 @@ class ArticleController extends Controller
         $article->body = $request->body;
         $article->category_id = $request->category_id;
         $article->slug = $request->slug;
+
+        $path = Storage::putFile('public', $request->image);
+        $article->image = basename($path);
+
         $article->save();
 
         Session::flash('success', 'Article publié');
