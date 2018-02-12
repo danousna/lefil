@@ -6,7 +6,7 @@
 
 <!-- Page Header -->
 <header class="masthead">
-    <div class="bg-blurry" style="background-image: url('{{ asset('img/articles/'.$article->slug.'.jpg') }}'); opacity: 0.6"></div>
+    <div class="bg-blurry" style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6"></div>
     <div class="container">
         <div class="row">
             <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
