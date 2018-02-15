@@ -20,7 +20,7 @@
     </div>
     <div class="row py-4 bg-bubble">
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
-            <form method="POST" action="{{ route('articles.update', $article->id) }}">
+            <form method="POST" action="{{ route('articles.update', $article->id) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -28,14 +28,22 @@
                 </div>
 
                 <div class="form-group">
-                    <textarea id="body" rows="10" class="form-control" name="body" required>{{ html_entity_decode($article->body, ENT_QUOTES) }}</textarea>
+                    <input id="image" type="file" class="form-control" name="image" required>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="body" rows="10" class="form-control" name="body" required>
+                        {{ html_entity_decode($article->body, ENT_QUOTES) }}
+                    </textarea>
                 </div>
 
                 <div class="form-group">
                     <select class="form-control" name="category_id">
                         <option value="" disabled selected>Rubrique</option>
                         @foreach ($user->categories as $category)
-                            <option value="{{ $category->id }}" {{ ($category->id == $article->category_id) ? "selected" : "" }}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {{ ($category->id == $article->category_id) ? "selected" : "" }}>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
 
                     </select>

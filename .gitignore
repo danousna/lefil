@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 .env
 /database/seeds/AdminsSeeder.php
+.DS_Store
+/public/storage/*.jpg
+/storage/app/public/*.jpg

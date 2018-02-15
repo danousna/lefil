@@ -16,11 +16,11 @@
         <div class="carousel-inner">
             @foreach ($articles->slice(0, 3) as $article)
                 <div class="carousel-item {{ ($article == $articles->first()) ? "active" : "" }} " style="height: 100%">
-                    <div class="bg-blurry" style="background-image: url('{{ asset('img/articles/'.$article->slug.'-blur.jpg') }}');"></div>
+                    <div class="bg-blurry" style="background-image: url('{{ asset('storage/blur-'.$article->image) }}');"></div>
                     <div class="container-fluid">
                         <div class="row"> 
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
-                            <a class="d-block col-xl-6 col-lg-8 col-10 mx-auto mt-4 hero px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}" style="background-image: url('{{ asset('img/articles/'.$article->slug.'.jpg') }}');">
+                            <a class="d-block col-xl-6 col-lg-8 col-10 mx-auto mt-4 hero px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}" style="background-image: url('{{ asset('storage/'.$article->image) }}');">
                                 <div class="bg-white p-4 title">
                                     <h2>
                                         {{ $article->title }}
