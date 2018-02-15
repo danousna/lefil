@@ -1,15 +1,5 @@
-.row .div-bubble .article .text-muted a {
-    font-size: 1rem;
-    color: #797979;
-}
-
 .row .div-bubble .article h5 {
     font-size: 1.2rem;
-}
-
-.row .div-bubble .article a:focus, .article a:hover {
-    text-decoration: none;
-    color: #0085A1 !important;
 }
 
 .row .div-bubble .btn-load-more {

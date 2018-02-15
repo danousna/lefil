@@ -14,6 +14,8 @@
 
 <!-- Custom styles for this template -->
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+<link href="{{ asset('css/btn.css') }}" rel="stylesheet">
+<link href="{{ asset('css/input.css') }}" rel="stylesheet">
 <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 <link href="{{ asset('css/posts.css') }}" rel="stylesheet">

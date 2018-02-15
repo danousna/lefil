@@ -22,8 +22,10 @@
                     <input id="title" type="text" class="form-control title" name="title" placeholder="Titre de l'Article" required>
                 </div>
 
-                <div class="form-group">
-                    <input id="image" type="file" class="form-control" name="image" required>
+                <div class="form-group file-input">
+                    <input type="file" id="image" name="image" required>
+                    <span class="btn btn-secondary mr-3">Choisir le fichier</span>
+                    <span class="label" data-js-label>Aucun ficher sélectionné</label>
                 </div>
 
                 <div class="form-group">
@@ -56,6 +58,8 @@
 
 @section('scripts')
     
+    <script src="{{ asset('js/file_input.js') }}"></script>
+
     <script src="{{ asset('vendor/simplemde/simplemde.min.js') }}"></script>
 
     <script>

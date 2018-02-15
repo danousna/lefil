@@ -213,6 +213,8 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         if ($article->user_id == Auth::user()->id) {
+            Storage::disk('public')->delete($article->image);
+            Storage::disk('public')->delete('blur-'.$article->image);
             $article->delete();
             Session::flash('success', 'Article supprimé');
             return redirect()->route('articles.index');

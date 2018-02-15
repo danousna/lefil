@@ -4,6 +4,11 @@
 
 @section('content')
 
+<!-- Page Header -->
+<header class="masthead">
+    <div class="bg-blurry" style="background-image: url('{{ asset('storage/'.$article->image) }}');"></div>
+</header>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
