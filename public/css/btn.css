@@ -1,0 +1,37 @@
+.btn {
+    padding: 8px 18px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    background: #2993FC;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #0373e2;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #eee;
+    color: black;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background: #ccc;
+    color: black;
+}
+
+.btn-lg {
+    font-size: 16px;
+    padding: 25px 35px;
+}
+
+.btn-sm {
+    font-size: 14px;
+    padding: 6px 16px;
+}

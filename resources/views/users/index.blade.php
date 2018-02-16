@@ -20,7 +20,7 @@
                         <th>Nom</th>
                         <th>Nom d'utilisateur</th>
                         <th>Email</th>
-                        <th>Date d'inscription</th>
+                        <th>Inscription</th>
                         <th>Rôle</th>
                         <th>Action</th>
                     </thead>

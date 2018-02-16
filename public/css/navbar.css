@@ -1,5 +1,5 @@
 #mainNav {
-    position: absolute;
+    /*position: absolute;*/
     background-color: #323232;
     color: #ccc;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -8,48 +8,71 @@
 #mainNav .navbar-toggler {
     text-transform: uppercase;
     font-size: 12px;
-    letter-spacing: 1px;
-    padding: 13px;
+    padding: 8px 10px;
     color: white;
+    border: 1px solid white;
 }
 
 #mainNav .navbar-nav > li.nav-item > a {
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: .05rem;
+    color: #ccc;
 }
 
-@media only screen and (min-width: 992px) {
-    #mainNav {
-        position: fixed;
-        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
-        box-shadow: 0 0 3px rgba(0,0,0,.2);
-    }
-    #mainNav .navbar-brand {
-        padding: 0px 20px;    
-    }
-    #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-        color: white;
-    }
-    #mainNav .navbar-nav > li.nav-item > a {
-        padding: 0px 20px;
-        color: #ccc;
-    }
-    #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-        color: white;
-    }
+#mainNav .navbar-brand {
+    padding: 0;    
 }
 
 #mainNav .navbar-brand img {
     height: 28px;
 }
+
+@media only screen and (min-width: 992px) {
+    #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+        color: white;
+    }
+    #mainNav .navbar-nav > li.nav-item > a {
+        padding: 0px 12px;
+    }
+    #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
+        color: white;
+    }
+
+    .dropdown-menu {
+        transform: translateX(-50%);
+    }
+
+    .dropdown-menu::before, .dropdown-menu::after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+    }
+
+    .dropdown-menu::before {
+        top: -16px;
+        right: 50%;
+        transform: translateX(50%);
+        border: 8px solid transparent;
+        border-bottom-color: rgba(27,31,35,0.15);
+    }
+
+    .dropdown-menu::after {
+        top: -14px;
+        right: 50%;
+        transform: translateX(50%);
+        border: 7px solid transparent;
+        border-bottom-color: #fff;
+    }
+}
+
 .dropdown-menu {
-    border-radius: .15rem;
-    min-width: 250px;
+    border-radius: 2px;
+    min-width: 200px;
     padding: 0;
-    top: 29px;
+    top: 30px;
     left: 50%;
-    transform: translateX(-50%);
+    box-shadow: 0 3px 12px rgba(27,31,35,0.15);
 }
 
 .dropdown-toggle {
@@ -59,7 +82,6 @@
 
 .dropdown-menu .dropdown-item {
     padding: .5rem 1rem;
-    font-weight: 300;
 }
 
 .dropdown-menu .dropdown-divider {

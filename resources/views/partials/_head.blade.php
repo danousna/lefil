@@ -10,10 +10,12 @@
 
 <!-- Custom fonts for this template -->
 <link href="{{ asset('vendor/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800,800i" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+<link href="{{ asset('css/btn.css') }}" rel="stylesheet">
+<link href="{{ asset('css/input.css') }}" rel="stylesheet">
 <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 <link href="{{ asset('css/posts.css') }}" rel="stylesheet">
