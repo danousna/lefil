@@ -55,7 +55,7 @@ class ArticleController extends Controller
         // Validate the data.
         $this->validate($request, array(
             'title'         => 'required|max:255',
-            'image'         => 'required|image|mimes:jpeg,jpg,png,gif,svg',
+            'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',
             'category_id'   => [
                                 'required',
                                 'integer',
@@ -73,22 +73,27 @@ class ArticleController extends Controller
         $article->category_id = $request->category_id;
         $article->slug = $request->slug;
 
-        // Image processing.
-        $image = Image::make($request->file('image'))->encode('jpg');
+        if ($request->has('image')) {    
+            // Image processing.
+            $image = Image::make($request->file('image'))->encode('jpg');
 
-        if ($image->width() > 2000)
-            $image->resize(2000, null, function ($constraint) {$constraint->aspectRatio();});
+            if ($image->width() > 2000)
+                $image->resize(2000, null, function ($constraint) {$constraint->aspectRatio();});
 
-        $hash = md5($image->__toString());
+            $hash = md5($image->__toString());
 
-        $path = "storage/{$hash}.jpg";
-        $image->save(public_path($path));
+            $path = "storage/{$hash}.jpg";
+            $image->save(public_path($path));
 
-        $image->resize(200, null, function ($constraint) {$constraint->aspectRatio();})->blur(30);
-        $path = "storage/blur-{$hash}.jpg";
-        $image->save(public_path($path));
-        
-        $article->image = $hash.'.jpg';
+            $image->resize(200, null, function ($constraint) {$constraint->aspectRatio();})->blur(30);
+            $path = "storage/blur-{$hash}.jpg";
+            $image->save(public_path($path));
+            
+            $article->image = $hash.'.jpg';
+        } else {
+            $article->image = '';
+        }
+
         $article->save();
 
         Session::flash('success', 'Article publié');
@@ -152,14 +157,14 @@ class ArticleController extends Controller
         if ($request->input('slug') == $article->slug) {
             $this->validate($request, array(
                 'title'         => 'required|max:255',
-                'image'         => 'required|image|mimes:jpeg,jpg,png,gif,svg',
+                'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',
                 'category_id'   => 'required|integer',
                 'body'          => 'required',
             ));
         } else {
             $this->validate($request, array(
                 'title'         => 'required|max:255',
-                'image'         => 'required|image|mimes:jpeg,jpg,png,gif,svg',
+                'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',
                 'category_id'   => 'required|integer',
                 'body'          => 'required',
                 'slug'          => 'required|alpha_dash|min:5|max:255|unique:articles,slug'
@@ -173,26 +178,29 @@ class ArticleController extends Controller
         $article->category_id = $request->category_id;
         $article->slug = $request->slug;
 
-        // Delete old image. (A changer quand image ne sera plus required).
-        Storage::disk('public')->delete($article->image);
-        Storage::disk('public')->delete('blur-'.$article->image);
+        if ($request->has('image')) {  
+            // Delete old image.
+            Storage::disk('public')->delete($article->image);
+            Storage::disk('public')->delete('blur-'.$article->image);
 
-        // Image processing.
-        $image = Image::make($request->file('image'))->encode('jpg');
+            // Image processing.
+            $image = Image::make($request->file('image'))->encode('jpg');
 
-        if ($image->width() > 2000)
-            $image->resize(2000, null, function ($constraint) {$constraint->aspectRatio();});
+            if ($image->width() > 2000)
+                $image->resize(2000, null, function ($constraint) {$constraint->aspectRatio();});
 
-        $hash = md5($image->__toString());
+            $hash = md5($image->__toString());
 
-        $path = "storage/{$hash}.jpg";
-        $image->save(public_path($path));
+            $path = "storage/{$hash}.jpg";
+            $image->save(public_path($path));
 
-        $image->resize(200, null, function ($constraint) {$constraint->aspectRatio();})->blur(30);
-        $path = "storage/blur-{$hash}.jpg";
-        $image->save(public_path($path));
-        
-        $article->image = $hash.'.jpg';
+            $image->resize(200, null, function ($constraint) {$constraint->aspectRatio();})->blur(30);
+            $path = "storage/blur-{$hash}.jpg";
+            $image->save(public_path($path));
+            
+            $article->image = $hash.'.jpg';
+        }
+
         $article->save();
 
         Session::flash('success', 'Article modifié');

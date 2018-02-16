@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group file-input">
-                    <input type="file" id="image" name="image" required>
+                    <input type="file" id="image" name="image">
                     <span class="btn btn-secondary mr-3">Choisir le fichier</span>
                     <span class="label" data-js-label>Aucun ficher sélectionné</label>
                 </div>
@@ -33,13 +33,15 @@
                 </div>
 
                 <div class="form-group">
-                    <select class="form-control" name="category_id">
-                        <option value="" disabled selected>Rubrique</option>
-                        @foreach ($user->categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-
-                    </select>
+                    <div class="select">
+                        <select class="form-control" name="category_id">
+                            <option value="" disabled selected>Rubrique</option>
+                            @foreach ($user->categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="select__arrow"></div>
+                    </div>
                 </div>
 
                 <div class="form-group">

@@ -100,3 +100,56 @@ label {
     border: 0;
     border-radius: 0;
 }
+
+
+.select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select select {
+    display: inline-block;
+    padding: 0 18px;
+    width: 100%;
+    cursor: pointer;
+    outline: 0;
+    background: #eee;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select select::-ms-expand {
+    display: none;
+}
+
+.select select:hover,
+.select select:focus {
+    background: #ccc;
+}
+
+.select select:disabled {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.select__arrow {
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-width: 8px 5px 0 5px;
+    border-style: solid;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select__arrow,
+.select select:focus ~ .select__arrow {
+    border-top-color: #000;
+}
+
+.select select:disabled ~ .select__arrow {
+    border-top-color: #ccc;
+}
