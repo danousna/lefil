@@ -6,11 +6,6 @@
 
 <!-- Main Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
-            Tous mes articles
-        </div>
-    </div>
     <div class="row py-4 bg-bubble">
         <div class="col-xl-6 col-lg-8 col-10 mx-auto">
             @foreach ($articles as $article)

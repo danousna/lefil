@@ -2,7 +2,6 @@ body {
     font-size: 20px;
     color: black;
     font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-    margin-top: 46px;
 }
 
 p {
@@ -16,6 +15,13 @@ p a {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
+}
+
+h1, h2 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3, h4, h5, h5 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -93,43 +99,4 @@ label {
     margin-bottom: 0;
     border: 0;
     border-radius: 0;
-}
-
-.form-control.title {
-    font-size: 40px;
-    font-weight: bold;
-    color: black;
-    border: none;
-    padding: 0;
-}
-
-.file-input {
-    display: inline-block;
-    text-align: left;
-    width: 100%;
-    position: relative;
-}
-
-.file-input > [type='file'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 10;
-}
-
-.file-input > .label {
-    color: black;
-    white-space: nowrap;
-    opacity: .3;
-}
-
-.file-input.-chosen > .label {
-    opacity: 1;
-}
-
-.file-input:hover .btn  {
-    background-color: #ccc;
 }

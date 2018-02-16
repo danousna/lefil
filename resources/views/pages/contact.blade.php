@@ -4,24 +4,11 @@
 
 @section('content')
 
-<!-- Page Header -->
-<header class="masthead bg-default" style="height: 250px">
-    <div class="container">
-        <div class="row">
-            <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
-                <div class="post-heading text-center">
-                    <h1 style="font-size: 3rem;">Contactez nous</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
-            Remplissez le formulaire ci-dessus, nous vous réponderons au plus vite.
+            <h2>Contactez nous</h2>
         </div>
     </div>
     <div class="row py-4 bg-bubble">

@@ -9,3 +9,43 @@
     box-shadow: none;
     border-color: #888;
 }
+
+.form-control.title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: black;
+    border: none;
+    padding: 0;
+}
+
+.file-input {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.file-input > [type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+.file-input > .label {
+    color: black;
+    white-space: nowrap;
+    opacity: .3;
+}
+
+.file-input.-chosen > .label {
+    opacity: 1;
+}
+
+.file-input:hover .btn  {
+    background-color: #ccc;
+}

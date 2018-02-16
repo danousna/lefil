@@ -1,5 +1,5 @@
 #mainNav {
-    position: absolute;
+    /*position: absolute;*/
     background-color: #323232;
     color: #ccc;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -15,16 +15,12 @@
 
 #mainNav .navbar-nav > li.nav-item > a {
     text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     letter-spacing: 1px;
 }
 
 @media only screen and (min-width: 992px) {
-    #mainNav {
-        position: fixed;
-        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
-        box-shadow: 0 0 3px rgba(0,0,0,.2);
-    }
     #mainNav .navbar-brand {
         padding: 0px 20px;    
     }

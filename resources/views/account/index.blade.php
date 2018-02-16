@@ -5,13 +5,7 @@
 @section('content')
     
 <!-- Main Content -->
-<!-- Main Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
-            Mon compte
-        </div>
-    </div>
     <div class="row py-4 bg-bubble">
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
 

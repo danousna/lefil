@@ -5,14 +5,11 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
-            Modifier <b>{{ $category->name }}</b>
-        </div>
-    </div>
     <div class="row py-4 bg-bubble">
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
             
+            <h3 class="mb-4">{{ $category->name }}</h3>
+
             <h4 class="mb-4">Auteurs</h4>
             @foreach ($category->users as $user)
                 <a href="{{ route('pages.user', $user->username) }}">{{ $user->username }}</a>,
