@@ -26,24 +26,42 @@
                         @if ($article->status == 'draft')
                             Brouillon
                         @endif
+                        @if ($article->status == 'waiting')
+                            <span class="text-info">En attente de publication</span>
+                        @endif 
                         @if ($article->status == 'published')
                             <span class="text-success">Publié</span>
                         @endif
                     </small>
                     <hr>
-                    <form method="POST" action="{{ route('articles.destroy', $article->id) }}">
-                        {{ csrf_field() }}
+
+                    @if (!Auth::user()->hasPermissionTo('publish article'))
                         @if ($article->status == 'draft')
-                            <a href="{{ route('articles.publish', $article->id) }}" class="btn btn-success btn-sm">
+                            <form method="POST" action="{{ route('articles.publish', $article->id) }}" style="display: inline-block;">
+                                {{ csrf_field() }}
+                                <input type="submit" value="Demande de publication" class="btn btn-success btn-sm">
+                            </form>
+                        @endif
+                    @endif
+                    
+                    @can('publish article')
+                        @if ($article->status == 'draft')
+                            <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm">
                                 Publier
                             </a>
                         @endif
-                        <a href="{{ route('articles.show', $article->id) }}" class="btn btn-secondary btn-sm">
-                            Voir
-                        </a>
-                        <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-secondary btn-sm">
-                            Modifier
-                        </a>
+                    @endcan
+
+                    <a href="{{ route('articles.show', $article->id) }}" class="btn btn-secondary btn-sm">
+                        Voir
+                    </a>
+                    <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-secondary btn-sm">
+                        Modifier
+                    </a>
+
+                    <form method="POST" action="{{ route('articles.destroy', $article->id) }}" style="display: inline-block;">
+                        {{ csrf_field() }}
+
                         <input type="submit" value="Supprimer" class="btn btn-danger btn-sm">
                         {{ method_field('DELETE') }}
                     </form>

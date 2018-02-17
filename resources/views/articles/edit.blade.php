@@ -38,7 +38,7 @@
                     <div class="select">
                         <select class="form-control" name="category_id">
                             <option value="" disabled selected>Rubrique</option>
-                            @foreach ($user->categories as $category)
+                            @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ ($category->id == $article->category_id) ? "selected" : "" }}>
                                     {{ $category->name }}
                                 </option>

@@ -16,11 +16,14 @@
                         <a class="nav-link {{ Request::is('articles/create') ? "active" : "" }}" href="{{ route('articles.create') }}">Écrire</a>
                     </li>
 
-                    @hasanyrole('admin|president')
+                    @hasanyrole('member|admin|president')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gestion</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
+                                @hasanyrole('admin|president')
+                                    <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                @endhasanyrole
                                 @role('admin')
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/users"><i class="fas fa-users fa-fw"> </i> Utilisateurs</a>
