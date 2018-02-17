@@ -66,3 +66,6 @@ Route::get('publish/{id}', 'PublishController@publish')->name('publish.article')
 // Categories
 Route::resource('categories', 'CategoryController');
 
+// Search
+
+

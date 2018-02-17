@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+<nav class="navbar navbar-expand-md navbar-light" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/"><img src="{{ asset('img/Logo.svg') }}"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,6 +66,18 @@
 
                 @endif
             </ul>
+            <div id="navbarDivSearchOpen" class="search-div-btn ml-2">
+                <button id="navbarSearchOpen" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <form action="/search" method="POST" id="navbarSearchForm" class="form-inline ml-md-2">
+                {{ csrf_field() }}
+                <div class="input-group search-div">
+                    <input class="form-control search-input" type="search" placeholder="Recherche" autofocus>
+                    <div class="input-group-append search-div-btn">
+                        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </nav>
