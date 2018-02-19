@@ -28,8 +28,15 @@
             <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
                 {{ $article->category->name }}</a>
             |
-            <a class="font-weight-bold" href="{{ route('pages.user', $article->user->username) }}">
-                {{ $article->user->username }}</a>
+            @if ($article->anonymous)  
+                <b>
+                    Anonyme
+                </b>
+            @else
+                <a class="font-weight-bold" href="{{ route('pages.user', $article->user->username) }}">
+                    {{ $article->user->username }}
+                </a>
+            @endif
             |
             {{ date('d/m/Y', strtotime($article->created_at)) }}
             |

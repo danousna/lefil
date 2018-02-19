@@ -92,6 +92,10 @@ class ArticleController extends Controller
             $article->image = '';
         }
 
+        if ($request->has('anonymous')) {
+            $article->anonymous = TRUE;
+        }
+
         $article->save();
 
         Session::flash('success', 'Article enregistré');
@@ -199,6 +203,12 @@ class ArticleController extends Controller
             $image->save(public_path($path));
             
             $article->image = $hash.'.jpg';
+        }
+
+        if ($request->has('anonymous')) {
+            $article->anonymous = TRUE;
+        } else {
+            $article->anonymous = FALSE;
         }
 
         $article->save();

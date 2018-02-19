@@ -51,6 +51,11 @@
                 <div class="form-group">
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" value="{{ $article->slug }}" required>
                 </div>
+
+                <div class="form-group">
+                    <input type="checkbox" name="anonymous" id="anonymous" value="anonymous" {{ ($article->anonymous) ? "checked" : "" }}> 
+                    <label for="anonymous">Auteur anonyme</label>
+                </div>
                 
                 <br>
 

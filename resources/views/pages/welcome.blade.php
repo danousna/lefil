@@ -28,9 +28,15 @@
                                     <h4 class="font-weight-normal subtitle">
                                         <i>{{ $article->category->name }}</i>
                                         |
-                                        <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
-                                            {{ $article->user->username }}
-                                        </span>
+                                        @if ($article->anonymous)
+                                            <span>  
+                                                Anonyme
+                                            </span>
+                                        @else    
+                                            <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
+                                                {{ $article->user->username }}
+                                            </span>
+                                        @endif
                                         |
                                         {{ date('d/m/Y', strtotime($article->created_at)) }}
                                     </h4>
@@ -70,9 +76,15 @@
                             {{ $article->category->name }}
                         </a>
                         |
-                        <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
-                            {{ $article->user->username }}
-                        </a>
+                        @if ($article->anonymous)
+                            <b>  
+                                Anonyme
+                            </b>
+                        @else
+                            <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
+                                {{ $article->user->username }}
+                            </a>
+                        @endif
                         |
                         {{ date('d/m/Y', strtotime($article->created_at)) }}
                     </small>

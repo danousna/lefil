@@ -48,6 +48,11 @@
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" required>
                 </div>
 
+                <div class="form-group">
+                    <input type="checkbox" name="anonymous" id="anonymous" value="anonymous"> 
+                    <label for="anonymous">Auteur anonyme</label>
+                </div>
+
                 <br>
 
                 <button id="submit-btn" type="submit" class="btn btn-primary">Enregistrer</button>

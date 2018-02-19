@@ -23,7 +23,11 @@
                                 </td>
                                 <td class="px-0" style="border: none !important;">
                                     <small class="text-muted">
-                                        {{ $article->user->username }}
+                                        @if ($article->anonymous)  
+                                            Anonyme
+                                        @else
+                                            {{ $article->user->username }}
+                                        @endif
                                         |
                                         <a href="{{ route('pages.category', $category->id) }}">{{ $category->name }}</a>
                                         |

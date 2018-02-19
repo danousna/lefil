@@ -67,7 +67,9 @@
                 @endif
             </ul>
             <div id="navbarDivSearchOpen" class="search-div-btn ml-2">
-                <button id="navbarSearchOpen" class="search-btn"><i class="fas fa-search"></i></button>
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Recherche désactivée pour le moment.">
+                    <button id="navbarSearchOpen" class="search-btn" style="pointer-events: none;" disabled><i class="fas fa-search"></i></button>
+                </span>
             </div>
             <form action="/search" method="POST" id="navbarSearchForm" class="form-inline ml-md-2">
                 {{ csrf_field() }}
