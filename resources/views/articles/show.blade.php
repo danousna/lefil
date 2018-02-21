@@ -6,7 +6,7 @@
 
 <!-- Page Header -->
 <header class="masthead">
-    <div class="bg-blurry" style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6"></div>
+    <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6" @endif></div>
     <div class="container">
         <div class="row">
             <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
@@ -28,12 +28,17 @@
             <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
                 {{ $article->category->name }}</a>
             |
-            <a class="font-weight-bold" href="{{ route('pages.user', $article->user->username) }}">
-                {{ $article->user->username }}</a>
+            @if ($article->anonymous)  
+                <b>
+                    Anonyme
+                </b>
+            @else
+                <a class="font-weight-bold" href="{{ route('pages.user', $article->user->username) }}">
+                    {{ $article->user->username }}
+                </a>
+            @endif
             |
             {{ date('d/m/Y', strtotime($article->created_at)) }}
-            |
-            9 commentaires
 
             <hr>
 

@@ -57,8 +57,19 @@ Route::resource('account', 'AccountController');
 
 // Articles
 Route::resource('articles', 'ArticleController');
-Route::get('articles/{id}/publish', 'ArticleController@publish')->name('articles.publish');
+Route::post('articles/{id}/publish', 'ArticleController@publishRequest')->name('articles.publish');
+
+// Publish tool
+Route::get('publish', 'PublishController@index');
+Route::get('publish/{id}', 'PublishController@publish')->name('publish.article');
 
 // Categories
 Route::resource('categories', 'CategoryController');
+
+// Comments
+Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
+
+// Search
+Route::get('search/{query}');
+
 

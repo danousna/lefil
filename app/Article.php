@@ -15,11 +15,18 @@ class Article extends Model
         'title', 'body', 'slug',
     ];
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo('App\User');
     }
 
-    public function category() {
+    public function category() 
+    {
         return $this->belongsTo('App\Category');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

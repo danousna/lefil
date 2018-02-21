@@ -29,11 +29,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function articles() {
+    public function articles() 
+    {
         return $this->hasMany('App\Article');
     }
 
-    public function categories() {
+    public function categories() 
+    {
         return $this->belongsToMany('App\Category');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

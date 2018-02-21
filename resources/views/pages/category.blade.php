@@ -28,9 +28,15 @@
                             {{ $article->category->name }}
                         </span>
                         |
-                        <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
-                            {{ $article->user->username }}
-                        </a>
+                        @if ($article->anonymous)
+                            <span>  
+                                Anonyme
+                            </span>
+                        @else
+                            <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
+                                {{ $article->user->username }}
+                            </a>
+                        @endif
                         |
                         {{ date('d/m/Y', strtotime($article->created_at)) }}
                     </small>

@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
 use App\User;
+use App\Comment;
 use Session;
 use Auth;
 use Parsedown;
@@ -17,7 +18,8 @@ use File;
 
 class ArticleController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware(['auth', 'clearance']);
     }
 
@@ -40,8 +42,9 @@ class ArticleController extends Controller
     public function create()
     {
         $user = User::find(Auth::user()->id);
+        $categories = Category::all();
         
-        return view('articles.create')->withUser($user);
+        return view('articles.create')->withUser($user)->withCategories($categories);
     }
 
     /**
@@ -56,11 +59,7 @@ class ArticleController extends Controller
         $this->validate($request, array(
             'title'         => 'required|max:255',
             'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',
-            'category_id'   => [
-                                'required',
-                                'integer',
-                                Rule::exists('category_user')->where('user_id', Auth::user()->id),
-                            ],
+            'category_id'   => 'required|integer',
             'body'          => 'required',
             'slug'          => 'required|alpha_dash|min:5|max:255|unique:articles,slug'
         ));
@@ -94,9 +93,13 @@ class ArticleController extends Controller
             $article->image = '';
         }
 
+        if ($request->has('anonymous')) {
+            $article->anonymous = TRUE;
+        }
+
         $article->save();
 
-        Session::flash('success', 'Article publié');
+        Session::flash('success', 'Article enregistré');
 
         // Redirect to another page.
         return redirect()->route('articles.index');
@@ -112,10 +115,11 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        if ($article->user_id == Auth::user()->id) {
+        if (($article->user_id == Auth::user()->id) || ((Auth::user()->hasPermissionTo('publish article')) && ($article->status == 'waiting'))) {
             // Parse the markdown to html.
             $Parsedown = new Parsedown();
             $article->body = $Parsedown->text($article->body);
+
             return view('articles.show')->withArticle($article);
         } else {
             $date = explode('-', substr($article->created_at, 0, 10));
@@ -135,7 +139,8 @@ class ArticleController extends Controller
 
         if ($article->user_id == Auth::user()->id) {
             $user = User::find(Auth::user()->id);
-            return view('articles.edit')->withArticle($article)->withUser($user);
+            $categories = Category::all();
+            return view('articles.edit')->withArticle($article)->withUser($user)->withCategories($categories);
         } else {
             Session::flash('error', 'Vous ne pouvez pas modifier cet article');
             return redirect('/');
@@ -201,9 +206,15 @@ class ArticleController extends Controller
             $article->image = $hash.'.jpg';
         }
 
+        if ($request->has('anonymous')) {
+            $article->anonymous = TRUE;
+        } else {
+            $article->anonymous = FALSE;
+        }
+
         $article->save();
 
-        Session::flash('success', 'Article modifié');
+        Session::flash('success', 'Article modifié.');
 
         // Redirect to another page.
         return redirect()->route('articles.index');
@@ -223,27 +234,31 @@ class ArticleController extends Controller
         if ($article->user_id == Auth::user()->id) {
             Storage::disk('public')->delete($article->image);
             Storage::disk('public')->delete('blur-'.$article->image);
+            $article->comments()->delete();
             $article->delete();
-            Session::flash('success', 'Article supprimé');
+            Session::flash('success', 'Article supprimé.');
             return redirect()->route('articles.index');
         } else {
-            Session::flash('error', 'Vous ne pouvez pas supprimer cet article');
+            Session::flash('error', 'Vous ne pouvez pas supprimer cet article.');
             return redirect('/');
         }
     }
 
-    public function publish($id) {
+    /**
+     * Change article status to 'waiting'.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function publishRequest(Request $request, $id) 
+    {
         $article = Article::find($id);
 
-        if ($article->user_id == Auth::user()->id) {
-            $article->status = 'published';
-            $article->save();
-            
-            Session::flash('success', 'Article publié');
-            return redirect()->route('articles.show', $id);
-        } else {
-            Session::flash('error', 'Vous ne pouvez pas publier cet article');
-            return redirect('/');
-        }
+        $article->status = 'waiting';
+        $article->save();
+
+        Session::flash('success', 'Votre demande de publication a été prise en compte.');
+        return redirect()->route('articles.index');
     }
 }

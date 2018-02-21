@@ -31,7 +31,7 @@ Pour éviter de futurs accidents, les étudiants sont donc invités à appuyer s
             'category_id'   => Category::where('name', 'Le Gorafil')->first()->id,
             'slug'          => 'corde-bus-utceene-skate-tragicomix',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
         $article = Article::create([
             'user_id'       => User::where('username', 'sofil')->first()->id,
@@ -52,7 +52,7 @@ Le minuteur retentit sur les douze coups de minuit. Iel venait d’arriver.',
             'category_id'   => Category::where('name', 'Bobine X')->first()->id,
             'slug'          => 'cuisine-couple',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
         $article = Article::create([
             'user_id'       => User::where('username', 'sofil')->first()->id,
@@ -80,7 +80,7 @@ RENDEZ-MOI MON SCRIPT ! Alors non, mangez normalement, à horaire fixe, ni trop 
             'category_id'   => Category::where('name', 'Scientifil')->first()->id,
             'slug'          => 'etudiants-malbouffe-reportage',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
         $article = Article::create([
             'user_id'       => User::where('username', 'Valentin')->first()->id,
@@ -99,7 +99,7 @@ Aller au marché c’est aussi retrouver le contact avec des choses simples et b
             'category_id'   => Category::where('name', 'Au Fil de la Pensée')->first()->id,
             'slug'          => 'terre-patates-vieux',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
         $article = Article::create([
             'user_id'       => User::where('username', 'danousna')->first()->id,
@@ -122,7 +122,7 @@ Nous conclurons sur cette métaphore certes osée mais qui nous semble juste. L�
             'category_id'   => Category::where('name', 'Random')->first()->id,
             'slug'          => 'guide-vieux-croutard-islande',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
         $article = Article::create([
             'user_id'       => User::where('username', 'danousna')->first()->id,
@@ -143,7 +143,7 @@ D’autres restaurants préfèrents se spécialiser dans les 饺子 JiaoZi (Ravi
             'category_id'   => Category::where('name', 'Enfin un Chinois qui vous Parle')->first()->id,
             'slug'          => 'chinois-voyage',
             'image'         => '',
-            'status'        => 'published',
+            'status'        => 'draft',
         ]);
     }
 }

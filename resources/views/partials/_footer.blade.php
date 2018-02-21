@@ -3,7 +3,9 @@
     <div class="container px-4">
         <div class="row">
             <div class="col-sm py-4 mr-3">
-                <img src="{{ asset('img/Logo-gray.svg') }}" width="100px">
+                <div class="text-center logo">
+                    <a href="/"><img src="{{ asset('img/Logo-gray.svg') }}" width="100px"></a>
+                </div>
                 <h6 class="mt-2">Le journal des étudiants de l'UTC</h6>
                 <span class="about">Le Fil est le torchon bimensuel gratuit des étudants tiré à 600 exemplaires. Chaque article n'engage que la responsabilité de son auteur.</span>
             </div>

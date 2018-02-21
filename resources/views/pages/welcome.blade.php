@@ -16,11 +16,11 @@
         <div class="carousel-inner">
             @foreach ($articles->slice(0, 3) as $article)
                 <div class="carousel-item {{ ($article == $articles->first()) ? "active" : "" }} " style="height: 100%">
-                    <div class="bg-blurry" style="background-image: url('{{ asset('storage/blur-'.$article->image) }}');"></div>
+                    <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/blur-'.$article->image) }}');" @endif></div>
                     <div class="container-fluid">
                         <div class="row"> 
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
-                            <a class="d-block col-xl-6 col-lg-8 col-10 mx-auto mt-4 hero px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}" style="background-image: url('{{ asset('storage/'.$article->image) }}');">
+                            <a class="d-block col-xl-6 col-lg-8 col-10 mx-auto mt-4 hero px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}');" @endif>
                                 <div class="bg-white p-4 title">
                                     <h2>
                                         {{ $article->title }}
@@ -28,11 +28,19 @@
                                     <h4 class="font-weight-normal subtitle">
                                         <i>{{ $article->category->name }}</i>
                                         |
-                                        <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
-                                            {{ $article->user->username }}
-                                        </span>
+                                        @if ($article->anonymous)
+                                            <span>  
+                                                Anonyme
+                                            </span>
+                                        @else    
+                                            <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
+                                                {{ $article->user->username }}
+                                            </span>
+                                        @endif
                                         |
                                         {{ date('d/m/Y', strtotime($article->created_at)) }}
+                                        |
+                                        {{ $article->comments()->count() }} commentaires
                                     </h4>
                                 </div>
                             </a>
@@ -70,11 +78,19 @@
                             {{ $article->category->name }}
                         </a>
                         |
-                        <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
-                            {{ $article->user->username }}
-                        </a>
+                        @if ($article->anonymous)
+                            <b>  
+                                Anonyme
+                            </b>
+                        @else
+                            <a class="font-weight-bold @if ($article->user->hasAnyRole('admin|president|member')) text-success @endif" href="{{ route('pages.user', $article->user->username) }}"> 
+                                {{ $article->user->username }}
+                            </a>
+                        @endif
                         |
                         {{ date('d/m/Y', strtotime($article->created_at)) }}
+                        |
+                        {{ $article->comments()->count() }} commentaires
                     </small>
                 </div>
                 <hr>

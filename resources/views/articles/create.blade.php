@@ -36,7 +36,7 @@
                     <div class="select">
                         <select class="form-control" name="category_id">
                             <option value="" disabled selected>Rubrique</option>
-                            @foreach ($user->categories as $category)
+                            @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
@@ -46,6 +46,11 @@
 
                 <div class="form-group">
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" name="anonymous" id="anonymous" value="anonymous"> 
+                    <label for="anonymous">Auteur anonyme</label>
                 </div>
 
                 <br>

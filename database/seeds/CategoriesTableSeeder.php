@@ -18,7 +18,8 @@ class CategoriesTableSeeder extends Seeder
         $category = Category::create([
             'name' => 'Général',
         ]);
-        $category->users()->sync(User::all()->pluck('id')->toArray());
+        $members = User::role('member')->pluck('id')->toArray();
+        $category->users()->sync($members);
 
         $category = Category::create([
             'name' => 'Édito',
@@ -48,7 +49,6 @@ class CategoriesTableSeeder extends Seeder
         $category = Category::create([
             'name' => 'Enfin un Chinois qui vous Parle',
         ]);
-        $category->users()->sync(User::where('username', 'example')->first()->id);
 
         $category = Category::create([
             'name' => 'Random',

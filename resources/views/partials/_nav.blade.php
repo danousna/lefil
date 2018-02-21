@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+<nav class="navbar navbar-expand-md navbar-light" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/"><img src="{{ asset('img/Logo.svg') }}"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,11 +16,14 @@
                         <a class="nav-link {{ Request::is('articles/create') ? "active" : "" }}" href="{{ route('articles.create') }}">Écrire</a>
                     </li>
 
-                    @hasanyrole('admin|president')
+                    @hasanyrole('member|admin|president')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gestion</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
+                                @hasanyrole('admin|president')
+                                    <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                @endhasanyrole
                                 @role('admin')
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/users"><i class="fas fa-users fa-fw"> </i> Utilisateurs</a>
@@ -63,6 +66,20 @@
 
                 @endif
             </ul>
+            <div id="navbarDivSearchOpen" class="search-div-btn ml-2">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Recherche désactivée pour le moment.">
+                    <button id="navbarSearchOpen" class="search-btn" style="pointer-events: none;" disabled><i class="fas fa-search"></i></button>
+                </span>
+            </div>
+            <form action="/search" method="POST" id="navbarSearchForm" class="form-inline ml-md-2">
+                {{ csrf_field() }}
+                <div class="input-group search-div">
+                    <input class="form-control search-input" type="search" placeholder="Recherche" autofocus>
+                    <div class="input-group-append search-div-btn">
+                        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </nav>
