@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
 use App\User;
+use App\Comment;
 use Session;
 use Auth;
 use Parsedown;
@@ -233,6 +234,7 @@ class ArticleController extends Controller
         if ($article->user_id == Auth::user()->id) {
             Storage::disk('public')->delete($article->image);
             Storage::disk('public')->delete('blur-'.$article->image);
+            $article->comments()->delete();
             $article->delete();
             Session::flash('success', 'Article supprimé.');
             return redirect()->route('articles.index');

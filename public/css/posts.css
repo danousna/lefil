@@ -66,3 +66,24 @@ header.masthead .post {
     width: 100% !important;
     border-radius: .75rem;
 }
+
+.comment {
+    
+}
+
+.comment p {
+    margin: 3px 0;
+    font-size: 15px;
+}
+
+.comment-depth-1 {
+    margin-left: 20px;
+}
+
+.comment-depth-2 {
+    margin-left: 40px;
+}
+
+.comment-reply {
+    color: #868e96;
+}

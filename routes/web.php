@@ -66,6 +66,9 @@ Route::get('publish/{id}', 'PublishController@publish')->name('publish.article')
 // Categories
 Route::resource('categories', 'CategoryController');
 
+// Comments
+Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
+
 // Search
 Route::get('search/{query}');
 
