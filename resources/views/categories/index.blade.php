@@ -7,35 +7,31 @@
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-11 mx-auto my-4 p-4">
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered" style="font-size: 1rem">
-                    <thead>
-                        <th>#</th>
-                        <th>Nom</th>
-                        <th>Action</th>
-                    </thead>
+        <div class="col-xl-6 col-lg-8 col-10 mx-auto">
+            <div class="div-bubble p-4 my-4">
+                <h4>Gestion des rubriques</h4>
 
+                <div class="table-responsive">
+                <table class="table">
                     <tbody>
-                        @foreach ($categories as $category)
+                    @foreach ($categories as $category)
                         <tr>
-                            <th>{{ $category->id }}</th>
-                            <td><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></td>
-                            <td>
+                            <td class="px-0" style="border: none !important;">
+                                <a class="mr-2" href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                            </td>
+                            <td class="px-0 text-right" style="border: none !important;">
                                 <a href="{{ route('categories.show', $category->id) }}" class="btn btn-secondary btn-sm">Voir</a>
                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-secondary btn-sm">Modifier</a>
                             </td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
-
                 </table>
+
+                <hr>
+
+                <a href="{{ route('categories.create') }}" class="btn btn-primary">Créer une rubrique</a>
             </div>
-
-            <br>
-
-            <a href="{{ route('categories.create') }}" class="btn btn-primary">Ajouter une rubrique</a>
-
         </div>
     </div>
 </div>

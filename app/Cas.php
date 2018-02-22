@@ -25,28 +25,6 @@ class Cas extends Model
         return redirect()->away('https://cas.utc.fr/cas/login?service='.$service);
     }
 
-    // public static function auth() {
-    //     $service = route('register');
-
-    //     if (!isset($_GET['ticket']))
-    //         return -1;
-
-    //     $response = file_get_contents('https://cas.utc.fr/cas/serviceValidate?service='.$service.'&ticket='.$_GET['ticket']);
-
-    //     if (empty($response))
-    //         return -1;
-
-    //     $user = Cas::parseCasXml($response);
-
-    //     if (empty($user))
-    //         return -1;
-
-    //     if ($user == -1)
-    //         return -1;
-
-    //     return $user;
-    // }
-
     public static function auth($service, $ticket) {
         $response = file_get_contents('https://cas.utc.fr/cas/serviceValidate?service='.$service.'&ticket='.$ticket);
 

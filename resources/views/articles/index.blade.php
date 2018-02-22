@@ -32,6 +32,13 @@
                         @if ($article->status == 'published')
                             <span class="text-success">Publié</span>
                         @endif
+                        @if ($article->status == 'issued')
+                            À paraitre
+                        @endif
+                        @if ($article->issue_id)
+                        |
+                            <span class="text-info">Numéro <b>{{ $article->issue->number }}</b> du <b>{{ explode(' ', $article->issue->release_date)[0] }}</b></span>
+                        @endif
                     </small>
                     <hr>
 
@@ -45,7 +52,7 @@
                     @endif
                     
                     @can('publish article')
-                        @if ($article->status == 'draft')
+                        @if ($article->status == 'draft' && $article->issue_id == '')
                             <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm">
                                 Publier
                             </a>

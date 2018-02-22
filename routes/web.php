@@ -19,7 +19,8 @@ Route::get('contact', 'PagesController@getContact');
 Route::get('{year}/{month}/{day}/{slug}', ['as' => 'pages.article', 'uses' => 'PagesController@getArticle'])->where('year', '[\d]+')->where('month', '[\d]+')->where('day', '[\d]+')->where('slug', '[\w\pL\d\-\_]+');
 
 // Category
-Route::get('category/{category}', ['as' => 'pages.category', 'uses' => 'PagesController@getCategory'])->where('category', '[\d]+');
+Route::get('rubriques', 'PagesController@getCategories')->name('pages.categories');
+Route::get('rubriques/{category}', ['as' => 'pages.category', 'uses' => 'PagesController@getCategory'])->where('category', '[\d]+');
 
 // User
 Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@getUser'])->where('username', '[\w\pL\d\-\_]+');
@@ -60,11 +61,15 @@ Route::resource('articles', 'ArticleController');
 Route::post('articles/{id}/publish', 'ArticleController@publishRequest')->name('articles.publish');
 
 // Publish tool
-Route::get('publish', 'PublishController@index');
+Route::get('publish', 'PublishController@index')->name('publish.index');
 Route::get('publish/{id}', 'PublishController@publish')->name('publish.article');
+Route::get('publish/{id}/refuse', 'PublishController@refuse')->name('publish.refuse');
 
 // Categories
 Route::resource('categories', 'CategoryController');
+
+// Issues
+Route::resource('issues', 'IssueController');
 
 // Comments
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
+use App\Issue;
 use App\User;
 use App\Comment;
 use Session;
@@ -43,8 +44,9 @@ class ArticleController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $categories = Category::all();
+        $issues = Issue::all();
         
-        return view('articles.create')->withUser($user)->withCategories($categories);
+        return view('articles.create')->withUser($user)->withCategories($categories)->withIssues($issues);
     }
 
     /**
@@ -70,7 +72,11 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->body = $request->body;
         $article->category_id = $request->category_id;
+        $article->issue_id = $request->issue_id;
         $article->slug = $request->slug;
+
+        if ($request->issue_id)
+            $article->status = "issued";
 
         if ($request->has('image')) {    
             // Image processing.
@@ -115,7 +121,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        if (($article->user_id == Auth::user()->id) || ((Auth::user()->hasPermissionTo('publish article')) && ($article->status == 'waiting'))) {
+        if (($article->user_id == Auth::user()->id) || 
+            ((Auth::user()->hasPermissionTo('publish article')) && ($article->status == 'waiting')) ||
+            ((Auth::user()->hasPermissionTo('manage category')) && ($article->status == 'issued'))
+            ) {
             // Parse the markdown to html.
             $Parsedown = new Parsedown();
             $article->body = $Parsedown->text($article->body);
@@ -140,7 +149,8 @@ class ArticleController extends Controller
         if ($article->user_id == Auth::user()->id) {
             $user = User::find(Auth::user()->id);
             $categories = Category::all();
-            return view('articles.edit')->withArticle($article)->withUser($user)->withCategories($categories);
+            $issues = Issue::all();
+            return view('articles.edit')->withArticle($article)->withUser($user)->withCategories($categories)->withIssues($issues);
         } else {
             Session::flash('error', 'Vous ne pouvez pas modifier cet article');
             return redirect('/');
@@ -181,7 +191,14 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->body = $request->body;
         $article->category_id = $request->category_id;
+        $article->issue_id = $request->issue_id;
         $article->slug = $request->slug;
+
+        if ($request->issue_id) 
+            $article->status = "issued";
+
+        if (!$request->issue_id)
+            $article->status = "draft";
 
         if ($request->has('image')) {  
             // Delete old image.
