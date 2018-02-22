@@ -54,4 +54,32 @@ class PublishController extends Controller
             return redirect('/');
         }
     }
+
+    public function refuse($id) {
+        $article = Article::find($id);
+
+        // President can publish everything
+        if (Auth::user()->hasRole(['admin', 'president'])) {
+            $article->status = 'draft';
+            $article->save();           
+            Session::flash('success', 'Article réfusé');
+            return redirect()->route('publish.index', $id);
+        }
+
+        // Member can publish their articles and the articles in their category.
+        if (Auth::user()->hasRole('member')) {
+            if (empty($article->category->users[Auth::user()->id])) {                
+                Session::flash('error', 'Vous n\'êtes pas responsable de cette rubrique');
+                return redirect('/');
+            } else {
+                $article->status = 'draft';
+                $article->save();           
+                Session::flash('success', 'Article réfusé');
+                return redirect()->route('publish.index', $id);
+            }
+        } else {
+            Session::flash('error', 'Vous devez être membre pour publier');
+            return redirect('/');
+        }
+    }
 }

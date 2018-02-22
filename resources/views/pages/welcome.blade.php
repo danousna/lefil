@@ -8,9 +8,11 @@
 <header class="masthead">
     <div id="heroesArticle" class="carousel slide" data-ride="carousel" data-interval='false'>
         <ol class="carousel-indicators">
-            <li data-target="#heroesArticle" data-slide-to="0" class="active"></li>
-            <li data-target="#heroesArticle" data-slide-to="1"></li>
-            <li data-target="#heroesArticle" data-slide-to="2"></li>
+            <?php $count = 0 ?>
+            @foreach ($articles->slice(0, 3) as $article)
+                <li data-target="#heroesArticle" data-slide-to="{{ $count }}" class="{{( $count == 0) ? "active" : "" }}"></li>
+                 <?php $count++ ?>
+            @endforeach
         </ol>
 
         <div class="carousel-inner">
@@ -39,8 +41,6 @@
                                         @endif
                                         |
                                         {{ date('d/m/Y', strtotime($article->created_at)) }}
-                                        |
-                                        {{ $article->comments()->count() }} commentaires
                                     </h4>
                                 </div>
                             </a>
@@ -89,16 +89,19 @@
                         @endif
                         |
                         {{ date('d/m/Y', strtotime($article->created_at)) }}
-                        |
-                        {{ $article->comments()->count() }} commentaires
+
+                        @if ($article->comments()->count() > 0)
+                            |
+                            {{ $article->comments()->count() }} commentaires
+                        @endif
                     </small>
                 </div>
                 <hr>
             @endforeach
 
-            <a href="#" class="btn-load-more" style="width: 70px;">
+            {{-- <a href="#" class="btn-load-more" style="width: 70px;">
                 <img src="{{ asset('img/circled-arrow-gray.svg') }}" width="70px">
-            </a>
+            </a> --}}
         </div>
     </div>
 </div>

@@ -67,7 +67,7 @@
                 </form>
             @else
                 <div class="text-center"> 
-                    <small>Connectez vous pour commenter</small>
+                    <small><a href="{{ route('login') }}">Connectez vous</a> pour commenter</small>
                 </div>
             @endif
         </div>

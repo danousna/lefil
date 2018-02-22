@@ -12,20 +12,24 @@ use Parsedown;
 
 class PagesController extends Controller
 {
-    public function getIndex() {
+    public function getIndex() 
+    {
         $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(10);
         return view('pages.welcome')->withArticles($articles);
     }
 
-    public function getAbout() {
+    public function getAbout() 
+    {
         return view('pages.about');
     }
 
-    public function getContact() {
+    public function getContact() 
+    {
         return view('pages.contact');
     }
 
-    public function getArticle($year, $month, $day, $slug) {
+    public function getArticle($year, $month, $day, $slug) 
+    {
         $article = Article::where('status', 'published')->where('slug', $slug)->first();
         
         if (!is_object($article)) {
@@ -54,13 +58,21 @@ class PagesController extends Controller
         }
     }
 
-    public function getCategory($id) {
+    public function getCategories() 
+    {
+        $categories = Category::all();
+        return view('pages.categories')->withCategories($categories);
+    }
+
+    public function getCategory($id) 
+    {
         $category = Category::find($id);
         $articlesOfCategory = $category->articles->where('status', 'published');
         return view('pages.category')->withCategory($category)->withArticles($articlesOfCategory);
     }
 
-    public function getUser($username) {
+    public function getUser($username) 
+    {
         $user = User::where('username', $username)->first();
         return view('pages.user')->withUser($user);
     }

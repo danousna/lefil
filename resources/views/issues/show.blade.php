@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', "Rubrique : $category->name")
+@section('title', "Numéro $issue->number")
 
 @section('content')
 
@@ -8,12 +8,7 @@
     <div class="row py-4 bg-bubble">
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
             
-            <h3 class="mb-4">{{ $category->name }}</h3>
-
-            <h4 class="mb-4">Auteurs</h4>
-            @foreach ($category->users as $user)
-                <a href="{{ route('pages.user', $user->username) }}">{{ $user->username }}</a>,
-            @endforeach
+            <h3 class="mb-4">Numéro {{ $issue->number }} {{ ($issue->titre) ? ": ".$issue->titre : "" }}</h3>
 
             <hr>
 
@@ -28,7 +23,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach ($category->articles as $article)
+                        @foreach ($issue->articles as $article)
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                             <tr>
                                 <td><a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">{{ substr($article->title, 0, 40) }}{{ strlen($article->title) > 40 ? "..." : "" }}</a></td>
@@ -51,7 +46,7 @@
 
             <br>
 
-            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Modifier la rubrique</a>
+            <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-primary">Modifier le numéro</a>
 
         </div>
     </div>

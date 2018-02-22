@@ -10,6 +10,10 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('/') ? "active" : "" }}" href="/">Accueil</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('rubrique/') ? "active" : "" }}" href="/rubriques">Rubriques</a>
+                </li>
                 
                 @if (Auth::check())
                     <li class="nav-item">
@@ -23,6 +27,7 @@
                                 <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
                                 @hasanyrole('admin|president')
                                     <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                    <a class="dropdown-item" href="/issues"><i class="fas fa-book fa-fw"></i> Numéros</a>
                                 @endhasanyrole
                                 @role('admin')
                                     <div class="dropdown-divider"></div>
