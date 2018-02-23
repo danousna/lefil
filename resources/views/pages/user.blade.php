@@ -17,7 +17,7 @@
 
             <dl>
                 <dt>Articles</dt>
-                <dd>{{ $user->articles()->count() }}</dd>
+                <dd>{{ $user->articles()->where('status', 'published')->where('anonymous', 0)->count() }}</dd>
                 <dt>Inscription</dt>
                 <dd>{{ date('m/Y', strtotime($user->created_at)) }}</dd>
             </dl>

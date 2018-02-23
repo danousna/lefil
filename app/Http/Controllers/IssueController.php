@@ -128,4 +128,20 @@ class IssueController extends Controller
         Session::flash('success', 'Numéro supprimé.');
         return redirect()->route('issues.index');
     }
+
+    public function publish($id)
+    {
+        $issue = Issue::find($id);
+
+        foreach($issue->articles as $article) {
+            $article->status = "published";
+            $article->save();
+        }
+
+        $issue->status = "published";
+        $issue->save();
+
+        Session::flash('success', 'Numéro publié');
+        return redirect()->route('issues.index');
+    }
 }

@@ -20,9 +20,22 @@
                             <td class="px-0" style="border: none !important;">
                                 <a class="mr-2" href="{{ route('issues.show', $issue->id) }}">{{ $issue->titre }}</a>
                             </td>
-                            <td class="px-0" style="border: none !important;">
-                                <small>{{ $issue->release_date }}</small>
+                            <td class="px-0 text-center" style="border: none !important;">
+                                <small>
+                                    <?php 
+                                        $date = new DateTime($issue->release_date);
+                                    ?>
+                                    {{ $date->format('d/m/Y') }}
+                                </small>
                             </td>
+                            @if ($issue->status == "published")
+                                <td class="px-0 text-right" style="border: none !important;">
+                                    <small class="text-success">Publié</small>
+                                </td>
+                            @else
+                                <td class="px-0" style="border: none !important;">
+                                </td>
+                            @endif
                             <td class="px-0 text-right" style="border: none !important;">
                                 <form method="POST" action="{{ route('issues.destroy', $issue->id) }}">
                                     {{ csrf_field() }}

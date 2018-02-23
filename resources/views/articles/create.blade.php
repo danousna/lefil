@@ -19,7 +19,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <input id="title" type="text" class="form-control title" name="title" placeholder="Titre de l'Article" required>
+                    <input id="title" type="text" class="form-control title" name="title" placeholder="Titre de l'Article" value="{{ old('title') }}" required>
                 </div>
 
                 <div class="form-group file-input">
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <textarea id="body" rows="10" class="form-control" name="body" required></textarea>
+                    <textarea id="body" rows="10" class="form-control" name="body" required>{{ old('body') }}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -37,7 +37,7 @@
                         <select class="form-control" name="category_id">
                             <option value="" disabled selected>Rubrique</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ (old('category_id') == $category->id) ? "selected" : "" }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                         <div class="select__arrow"></div>
@@ -46,12 +46,11 @@
 
                 @hasanyrole('member|admin|president')
                     <div class="form-group">
-                        <label for="issue_id">Cet article fait partie d'un numéro :</label>
                         <div class="select">
                             <select class="form-control" name="issue_id">
-                                <option value="" selected>Pas de numéro</option>
+                                <option value="" selected>Cet article ne fait pas partie d'un numéro</option>
                                 @foreach ($issues as $issue)
-                                    <option value="{{ $issue->id }}">{{ $issue->titre }}</option>
+                                    <option value="{{ $issue->id }}" {{ (old('issue_id') == $issue->id) ? "selected" : "" }}>{{ $issue->titre }} - n°{{ $issue->number }}</option>
                                 @endforeach
                             </select>
                             <div class="select__arrow"></div>
@@ -60,11 +59,11 @@
                 @endhasanyrole
 
                 <div class="form-group">
-                    <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" required>
+                    <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" value="{{ old('slug') }}" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="checkbox" name="anonymous" id="anonymous" value="anonymous"> 
+                    <input type="checkbox" name="anonymous" id="anonymous" value="anonymous" {{ old('anonymous') ? "checked" : "" }}> 
                     <label for="anonymous">Auteur anonyme</label>
                 </div>
 

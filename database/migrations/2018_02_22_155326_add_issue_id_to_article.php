@@ -27,6 +27,7 @@ class AddIssueIdToArticle extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
+            $table->dropForeign('articles_issue_id_foreign');
             $table->dropColumn('issue_id');
         });
     }
