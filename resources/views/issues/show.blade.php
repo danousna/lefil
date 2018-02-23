@@ -9,6 +9,10 @@
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
             
             <h3 class="mb-4">Numéro {{ $issue->number }} {{ ($issue->titre) ? ": ".$issue->titre : "" }}</h3>
+            
+            @if ($issue->status == "published")
+                <span class="text-success">Publié</span>
+            @endif
 
             <hr>
 
@@ -45,6 +49,10 @@
             </div>
 
             <br>
+            
+            @if ($issue->status == "draft")
+                <a href="{{ route('issues.publish', $issue->id) }}" class="btn btn-success">Publier le numéro</a>
+            @endif
 
             <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-primary">Modifier le numéro</a>
 

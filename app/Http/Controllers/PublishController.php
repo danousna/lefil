@@ -40,7 +40,7 @@ class PublishController extends Controller
 
         // Member can publish their articles and the articles in their category.
         if (Auth::user()->hasRole('member')) {
-            if (empty($article->category->users[Auth::user()->id])) {                
+            if (!$article->category->users->where('id', Auth::user()->id)) {       
                 Session::flash('error', 'Vous n\'êtes pas responsable de cette rubrique');
                 return redirect('/');
             } else {

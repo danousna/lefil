@@ -11,8 +11,12 @@
                     <a class="nav-link {{ Request::is('/') ? "active" : "" }}" href="/">Accueil</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('rubrique/') ? "active" : "" }}" href="/rubriques">Rubriques</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Découvrir</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/rubriques">Rubriques</a>
+                        <a class="dropdown-item" href="/numéros">Numéros</a>
+                    </div>
                 </li>
                 
                 @if (Auth::check())

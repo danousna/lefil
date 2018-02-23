@@ -16,11 +16,22 @@
 
             @foreach ($categories as $category)
                 <div class="article">
-                    <h5 class="mb-0">
-                        <a href="">
+                    <h4>
+                        <a href="{{ route('pages.category', $category->id)}}">
                             {{ $category->name }}
                         </a>
-                    </h5>
+                    </h4>
+                    @if ($category->articles->where('status', 'published')->count() > 0)
+                        <span class="text-muted">Derniers articles :</span>
+                        <br>
+                        <div class="ml-3"> 
+                        @foreach ($category->articles->where('status', 'published') as $article)
+                            <a href="">
+                                {{ $article->title }}
+                            </a>
+                        @endforeach
+                        </div>
+                    @endif
                 </div>
                 <hr>
             @endforeach

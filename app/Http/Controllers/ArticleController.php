@@ -197,7 +197,7 @@ class ArticleController extends Controller
         if ($request->issue_id) 
             $article->status = "issued";
 
-        if (!$request->issue_id)
+        if (!$request->issue_id && $article->status != "published")
             $article->status = "draft";
 
         if ($request->has('image')) {  

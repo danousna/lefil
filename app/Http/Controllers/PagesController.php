@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Article;
 use App\Category;
+use App\Issue;
 use App\Comment;
 use Session;
 use Parsedown;
@@ -67,8 +68,19 @@ class PagesController extends Controller
     public function getCategory($id) 
     {
         $category = Category::find($id);
-        $articlesOfCategory = $category->articles->where('status', 'published');
-        return view('pages.category')->withCategory($category)->withArticles($articlesOfCategory);
+        return view('pages.category')->withCategory($category);
+    }
+
+    public function getIssues() 
+    {
+        $issues = Issue::all();
+        return view('pages.issues')->withIssues($issues);
+    }
+
+    public function getIssue($number)
+    {
+        $issue = Issue::where('number', $number)->first();
+        return view('pages.issue')->withIssue($issue);
     }
 
     public function getUser($username) 

@@ -22,6 +22,10 @@ Route::get('{year}/{month}/{day}/{slug}', ['as' => 'pages.article', 'uses' => 'P
 Route::get('rubriques', 'PagesController@getCategories')->name('pages.categories');
 Route::get('rubriques/{category}', ['as' => 'pages.category', 'uses' => 'PagesController@getCategory'])->where('category', '[\d]+');
 
+// Issue
+Route::get('numéros','PagesController@getIssues')->name('pages.issues');
+Route::get('numéros/{number}','PagesController@getIssue')->name('pages.issue');
+
 // User
 Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@getUser'])->where('username', '[\w\pL\d\-\_]+');
 
@@ -70,6 +74,7 @@ Route::resource('categories', 'CategoryController');
 
 // Issues
 Route::resource('issues', 'IssueController');
+Route::get('issues/{id}/publish', 'IssueController@publish')->name('issues.publish');
 
 // Comments
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');

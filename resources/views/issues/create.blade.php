@@ -13,17 +13,17 @@
 
                 <div class="form-group">
                     <label for="number">Numéro</label>
-                    <input type="number" name="number" id="number" class="form-control" required>
+                    <input type="number" name="number" id="number" class="form-control" value="{{ old('number') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="titre">Titre du numéro <small class="text-muted">(facultatif)</small></label>
-                    <input type="text" name="titre" id="titre" class="form-control">
+                    <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre') }}">
                 </div>
 
                 <div class="form-group">
                     <label for="released_date">Date de parution</label>
-                    <input type="date" name="release_date" class="form-control" required>    
+                    <input type="date" name="release_date" class="form-control" value="{{ old('release_date') }}" required>    
                 </div>
 
                 <br>
