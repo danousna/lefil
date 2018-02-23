@@ -33,7 +33,7 @@ class PublishController extends Controller
         // President can publish everything
         if (Auth::user()->hasRole(['admin', 'president'])) {
             $article->status = 'published';
-            $article->save();           
+            $article->save(); 
             Session::flash('success', 'Article publié');
             return redirect()->route('articles.show', $id);
         }
