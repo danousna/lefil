@@ -153,3 +153,47 @@
     font-size: 1rem;
     color: black;
 }
+
+.aa-hint {
+    color: #e4e4e4; 
+}
+.aa-dropdown-menu {
+    background-color: #fff;
+    width: 233px;
+    margin-top: 10px;
+    font-size: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+    box-sizing: border-box; 
+}
+.aa-suggestion {
+    padding: .5rem 1rem;
+    border-top: 1px solid rgba(228, 228, 228, 0.6);
+    cursor: pointer;
+    -webkit-transition: .2s;
+    transition: .2s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; 
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35); 
+}
+.aa-suggestion > span:first-child {
+    color: #333; 
+}
+.aa-suggestion > span:last-child {
+    color: #333; 
+}
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+    font-weight: 700;
+    font-style: normal;
+    background-color: rgba(58, 150, 207, 0.1);
+    padding: 2px 0 2px 2px; 
+}
