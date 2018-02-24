@@ -36,6 +36,7 @@
                                 </td>
                                 <td class="px-0 text-right" style="border: none !important;">
                                     <a href="{{ route('articles.show', $article->id) }}" class="btn btn-secondary btn-sm">Voir</a>
+                                     <a href="{{ route('publish.refuse', $article->id) }}" class="btn btn-danger btn-sm">Refuser</a>
                                     <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm">Publier</a>
                                 </td>
                             </tr>

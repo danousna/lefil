@@ -10,6 +10,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('/') ? "active" : "" }}" href="/">Accueil</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Découvrir</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/rubriques">Rubriques</a>
+                        <a class="dropdown-item" href="/numéros">Numéros</a>
+                    </div>
+                </li>
                 
                 @if (Auth::check())
                     <li class="nav-item">
@@ -23,6 +31,7 @@
                                 <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
                                 @hasanyrole('admin|president')
                                     <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                                    <a class="dropdown-item" href="/issues"><i class="fas fa-book fa-fw"></i> Numéros</a>
                                 @endhasanyrole
                                 @role('admin')
                                     <div class="dropdown-divider"></div>
@@ -66,20 +75,20 @@
 
                 @endif
             </ul>
+
             <div id="navbarDivSearchOpen" class="search-div-btn ml-2">
-                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Recherche désactivée pour le moment.">
-                    <button id="navbarSearchOpen" class="search-btn" style="pointer-events: none;" disabled><i class="fas fa-search"></i></button>
-                </span>
+                <button id="navbarSearchOpen" class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <form action="/search" method="POST" id="navbarSearchForm" class="form-inline ml-md-2">
+
+            <div id="navbarSearchForm" class="form-inline ml-md-2">
                 {{ csrf_field() }}
-                <div class="input-group search-div">
-                    <input class="form-control search-input" type="search" placeholder="Recherche" autofocus>
+                <div id="aa-input-container" class="aa-input-container input-group search-div">
+                    <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off" autofocus>
                     <div class="input-group-append search-div-btn">
                         <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </nav>

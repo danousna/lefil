@@ -48,6 +48,23 @@
                     </div>
                 </div>
 
+                @hasanyrole('member|admin|president')
+                    <div class="form-group">
+                        <label for="issue_id">Cet article fait partie d'un numéro :</label>
+                        <div class="select">
+                            <select class="form-control" name="issue_id">
+                                <option value="" selected>Pas de numéro</option>
+                                @foreach ($issues as $issue)
+                                    <option value="{{ $issue->id }}" {{ ($issue->id == $article->issue_id) ? "selected" : "" }}>
+                                        {{ $issue->titre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
+                @endhasanyrole
+
                 <div class="form-group">
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" value="{{ $article->slug }}" required>
                 </div>

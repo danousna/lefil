@@ -9,7 +9,7 @@
     <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6" @endif></div>
     <div class="container">
         <div class="row">
-            <div class="post col-xl-6 col-lg-8 col-11 my-4 p-4">
+            <div class="post col-lg-8 col-11 my-4 p-4">
                 <div class="post-heading text-center">
                     <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                     <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
@@ -25,6 +25,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
+            @if ($article->issue_id)
+                <b><a href="{{ route('pages.issue', $article->issue->number) }}">{{ $article->issue->number }}</a></b>
+                |
+            @endif
             <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
                 {{ $article->category->name }}</a>
             |
