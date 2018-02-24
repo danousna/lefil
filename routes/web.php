@@ -80,6 +80,6 @@ Route::get('issues/{id}/publish', 'IssueController@publish')->name('issues.publi
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
 
 // Search
-Route::get('search/{query}');
+Route::post('search', 'SearchController@results')->name('search.results');
 
 
