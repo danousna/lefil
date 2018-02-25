@@ -13,32 +13,27 @@
     </div>
     <div class="row py-4 bg-bubble">
         <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
-            <form name="sentMessage" id="contactForm" novalidate>
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Nom</label>
-                        <input type="text" class="form-control" id="name" required>
-                        <p class="help-block text-danger"></p>
-                    </div>
+            <form method="POST" action="/contact">
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input name="name" type="text" class="form-control" id="name" required>
                 </div>
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                        <p class="help-block text-danger"></p>
-                    </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" required>
                 </div>
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Message</label>
-                        <textarea rows="5" class="form-control" id="message" required></textarea>
-                        <p class="help-block text-danger"></p>
-                    </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" rows="5" class="form-control" id="message" required></textarea>
                 </div>
                 
                 <br>
                 
-                <button type="submit" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
         </div>
     </div>

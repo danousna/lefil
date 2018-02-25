@@ -44,7 +44,7 @@ class ArticleController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $categories = Category::all();
-        $issues = Issue::all();
+        $issues = Issue::all()->where('status', 'draft');
         
         return view('articles.create')->withUser($user)->withCategories($categories)->withIssues($issues);
     }

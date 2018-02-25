@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMessage;
 use App\User;
 use App\Article;
 use App\Category;
@@ -27,6 +29,22 @@ class PagesController extends Controller
     public function getContact() 
     {
         return view('pages.contact');
+    }
+
+    public function postContact(Request $request)
+    {
+        $this->validate($request, array(
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'message'   => 'required',
+        ));
+
+        Mail::to("jeremy.pointel@etu.utc.fr")
+            ->cc("natan.danous@gmail.com")
+            ->send(new ContactMessage($request));
+        
+        Session::flash('success', "Message envoyé.");
+        return redirect('/contact'); 
     }
 
     public function getArticle($year, $month, $day, $slug) 
