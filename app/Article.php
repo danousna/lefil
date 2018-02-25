@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use App\User;
 
 class Article extends Model
 {
@@ -28,10 +29,17 @@ class Article extends Model
     {
         $record = $this->toArray();
 
+        if ($record['anonymous']) {
+            $record['user'] = "Anonyme";
+        } else {
+            $record['user'] = User::find($record['user_id'])->username;
+        }
+
         $date = explode('-', substr($record['created_at'], 0, 10));
         $url = url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $record['slug'];
 
         $record['url'] = $url;
+        $record['date'] = $date[2].'/'.$date[1].'/'.$date[0];
 
         unset($record['id'], $record['user_id'], $record['category_id'], $record['issue_id'], $record['image'], $record['status'], $record['anonymous'], $record['created_at'], $record['updated_at']);
 

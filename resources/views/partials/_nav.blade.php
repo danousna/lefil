@@ -76,17 +76,9 @@
                 @endif
             </ul>
 
-            <div id="navbarDivSearchOpen" class="search-div-btn ml-2">
-                <button id="navbarSearchOpen" class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-
-            <div id="navbarSearchForm" class="form-inline ml-md-2">
-                {{ csrf_field() }}
+            <div class="ml-md-2">
                 <div id="aa-input-container" class="aa-input-container input-group search-div">
-                    <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off" autofocus>
-                    <div class="input-group-append search-div-btn">
-                        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
+                    <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off">
                 </div>
             </div>
         </div>
