@@ -11,8 +11,14 @@
 |
 */
 
+/* 
+    Public facing pages
+*/
+
 Route::get('/', 'PagesController@getIndex');
 Route::get('about', 'PagesController@getAbout');
+
+// Contact
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 
@@ -27,8 +33,20 @@ Route::get('rubriques/{category}', ['as' => 'pages.category', 'uses' => 'PagesCo
 Route::get('numéros','PagesController@getIssues')->name('pages.issues');
 Route::get('numéros/{number}','PagesController@getIssue')->name('pages.issue');
 
+// Bops
+Route::get('bops', 'PagesController@getBops')->name('pages.bops');
+Route::post('bops', 'PagesController@postBops')->name('pages.bops');
+
+// Spotted
+Route::get('spotted', 'PagesController@getSpotted')->name('pages.spotted');
+
 // User
 Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@getUser'])->where('username', '[\w\pL\d\-\_]+');
+
+
+/*
+    Auth facing pages
+*/
 
 // Default Auth Routes
 // Auth::routes();
@@ -79,6 +97,9 @@ Route::get('issues/{id}/publish', 'IssueController@publish')->name('issues.publi
 
 // Comments
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
+
+// Bops
+Route::resource('bops_manager', 'BopsController');
 
 // Search
 Route::post('search', 'SearchController@results')->name('search.results');

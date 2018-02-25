@@ -1,19 +1,24 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/"><img src="{{ asset('img/Logo.svg') }}"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="ml-md-2">
+                <div id="aa-input-container" class="aa-input-container input-group search-div">
+                    <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off">
+                </div>
+            </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Découvrir</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/rubriques">Rubriques</a>
-                        <a class="dropdown-item" href="/numéros">Numéros</a>
-                        <a class="dropdown-item" href="/bops">Bops</a>
-                        <a class="dropdown-item" href="/spotted">Spotted</a>
+                        <a class="dropdown-item" href="/rubriques"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
+                        <a class="dropdown-item" href="/numéros"><i class="fas fa-book fa-fw"></i> Numéros</a>
+                        <a class="dropdown-item" href="/bops"><i class="fas fa-inbox fa-fw"></i> Bops</a>
+                        <a class="dropdown-item" href="/spotted"><i class="fas fa-bullseye fa-fw"></i> Spotted</a>
                     </div>
                 </li>
                 
@@ -27,6 +32,7 @@
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gestion</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
+                                <a class="dropdown-item" href="/bops_manager"><i class="fas fa-inbox fa-fw"></i> Bop's</a>
                                 @hasanyrole('admin|president')
                                     <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
                                     <a class="dropdown-item" href="/issues"><i class="fas fa-book fa-fw"></i> Numéros</a>
@@ -45,7 +51,7 @@
                         <a class="nav-link dropdown-toggle {{ Request::is('user/'.Auth::user()->username) ? "active" : "" }}" href="#" data-toggle="dropdown">{{ Auth::user()->username }}</a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="/articles"><i class="fas fa-list-alt fa-fw"></i> Mes articles</a>
+                            <a class="dropdown-item" href="/articles"><i class="fas fa-file-alt fa-fw"></i> Mes articles</a>
                             <a class="dropdown-item" href="{{ route('pages.user', Auth::user()->username) }}"><i class="fas fa-user fa-fw"></i> Page publique</a>
                             <a class="dropdown-item" href="/account"><i class="fas fa-cog fa-fw"></i> Paramètres</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a>
@@ -78,12 +84,6 @@
 
                 @endif
             </ul>
-
-            <div class="ml-md-2">
-                <div id="aa-input-container" class="aa-input-container input-group search-div">
-                    <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off">
-                </div>
-            </div>
         </div>
     </div>
 </nav>
