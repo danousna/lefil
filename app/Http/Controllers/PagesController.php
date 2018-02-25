@@ -10,6 +10,7 @@ use App\Article;
 use App\Category;
 use App\Issue;
 use App\Comment;
+use App\Bops;
 use Session;
 use Parsedown;
 
@@ -99,6 +100,45 @@ class PagesController extends Controller
     {
         $issue = Issue::where('number', $number)->first();
         return view('pages.issue')->withIssue($issue);
+    }
+
+    public function getBops()
+    {
+        $bops = Bops::where('status', 'published')->orderBy('id', 'desc')->get();
+
+        $uvs = [];  
+        foreach ($bops as $bop) {
+            if (array_key_exists($bop->uv, $uvs)) {
+                $uvs[$bop->uv]++;
+            } else {
+                $uvs[$bop->uv] = 0;
+            }
+        }
+
+        return view('pages.bops')->withBops($bops)->withUvs($uvs);
+    }
+
+    public function postBops(Request $request)
+    {
+        $this->validate($request, array(
+            'uv'        => 'required|max:4|regex:/[A-Z0-9]/',
+            'body'      => 'required',
+        ));
+
+        $bops = new Bops;
+
+        $bops->uv = $request->uv;
+        $bops->body = $request->body;
+
+        $bops->save();
+        
+        Session::flash('success', "Votre Bops a été envoyée. Elle sera publiée une fois vérifiée.");
+        return redirect('/bops'); 
+    }
+
+    public function getSpotted()
+    {
+        return view('pages.spotted');
     }
 
     public function getUser($username) 
