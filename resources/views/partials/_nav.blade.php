@@ -7,15 +7,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? "active" : "" }}" href="/">Accueil</a>
-                </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Découvrir</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/rubriques">Rubriques</a>
                         <a class="dropdown-item" href="/numéros">Numéros</a>
+                        <a class="dropdown-item" href="/bops">Bops</a>
+                        <a class="dropdown-item" href="/spotted">Spotted</a>
                     </div>
                 </li>
                 
@@ -49,9 +47,9 @@
 
                             <a class="dropdown-item" href="/articles"><i class="fas fa-list-alt fa-fw"></i> Mes articles</a>
                             <a class="dropdown-item" href="{{ route('pages.user', Auth::user()->username) }}"><i class="fas fa-user fa-fw"></i> Page publique</a>
-                             <a class="dropdown-item" href="/account"><i class="fas fa-cog fa-fw"></i> Paramètres</a>
-                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a>
-                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <a class="dropdown-item" href="/account"><i class="fas fa-cog fa-fw"></i> Paramètres</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-fw"></i> Déconnexion</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
 
@@ -60,12 +58,17 @@
 
                 @else 
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('about') ? "active" : "" }}" href="/about">À propos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">L'association</a>
+                        <div class="dropdown-menu">
+
+                            <a class="dropdown-item" href="/about">À propos</a>
+                            <a class="dropdown-item" href="/contact">Contact</a>
+                            <a class="dropdown-item" href="/archive">Archive</a>
+
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('contact') ? "active" : "" }}" href="/contact">Contact</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('register') ? "active" : "" }}" href="{{ route('register') }}">Inscription</a>
                     </li>
