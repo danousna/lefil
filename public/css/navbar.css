@@ -145,11 +145,21 @@
     color: #333; 
 }
 .aa-suggestion > span:last-child {
-    color: #333; 
+    color: #868e96; 
 }
 .aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
     font-weight: 700;
     font-style: normal;
-    background-color: rgba(58, 150, 207, 0.1);
-    padding: 2px 0 2px 2px; 
+    text-decoration: underline;
+}
+
+.aa-branding {
+    display: block;
+    border-top: 2px solid rgba(228, 228, 228, 0.6);
+    padding: .5rem 1rem;
+    text-align: center;
+}
+
+.aa-branding img {
+    width: 75%;
 }
