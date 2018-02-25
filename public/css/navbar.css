@@ -64,6 +64,10 @@
         border: 7px solid transparent;
         border-bottom-color: #fff;
     }
+
+    .aa-dropdown-menu {
+        width: 230px;
+    }
 }
 
 #mainNav .search-div {
@@ -110,12 +114,16 @@
     color: black;
 }
 
+.algolia-autocomplete {
+    width: 100%;
+}
+
 .aa-hint {
     color: #e4e4e4; 
 }
 .aa-dropdown-menu {
     background-color: #fff;
-    width: 230px;
+    width: 100%;
     margin-top: 10px;
     font-size: .9rem;
     border-radius: 2px;

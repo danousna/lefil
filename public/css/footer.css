@@ -15,6 +15,10 @@ footer .about {
     font-size: 0.9rem;
 }
 
+footer .site-map-link {
+    font-weight: bold;
+}
+
 @media only screen and (min-width: 576px) {
 
     footer .logo {
