@@ -18,8 +18,17 @@ class PagesController extends Controller
 {
     public function getIndex() 
     {
-        $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(10);
-        return view('pages.welcome')->withArticles($articles);
+        $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(20);
+        $categories = Category::all();
+        $issues = Issue::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
+        $comments = Comment::orderBy('id', 'desc')->take(4)->get();
+        $bops = Bops::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
+        return view('pages.welcome')
+            ->withArticles($articles)
+            ->withIssues($issues)
+            ->withCategories($categories)
+            ->withComments($comments)
+            ->withBops($bops);
     }
 
     public function getAbout() 
@@ -111,7 +120,7 @@ class PagesController extends Controller
             if (array_key_exists($bop->uv, $uvs)) {
                 $uvs[$bop->uv]++;
             } else {
-                $uvs[$bop->uv] = 0;
+                $uvs[$bop->uv] = 1;
             }
         }
 
@@ -145,5 +154,10 @@ class PagesController extends Controller
     {
         $user = User::where('username', $username)->first();
         return view('pages.user')->withUser($user);
+    }
+
+    public function getArchive()
+    {
+        return redirect()->away('https://assos.utc.fr/lefil/archive.php');
     }
 }

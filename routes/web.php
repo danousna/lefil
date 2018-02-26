@@ -43,6 +43,9 @@ Route::get('spotted', 'PagesController@getSpotted')->name('pages.spotted');
 // User
 Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@getUser'])->where('username', '[\w\pL\d\-\_]+');
 
+// Archive
+Route::get('archive', 'PagesController@getArchive');
+
 
 /*
     Auth facing pages
