@@ -20,7 +20,7 @@
 
 <!-- Custom fonts for this template -->
 <link href="{{ asset('vendor/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800,800i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">

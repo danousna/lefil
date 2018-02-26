@@ -26,7 +26,7 @@
                         <br>
                         <div class="ml-3"> 
                         @foreach ($category->articles->where('status', 'published') as $article)
-                            <a href="">
+                            <a class="title" href="">
                                 {{ $article->title }}
                             </a>
                         @endforeach

@@ -1,6 +1,6 @@
 #mainNav {
     /*position: absolute;*/
-    background-color: #323232;
+    background-color: #26292d;
     color: #ccc;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -21,7 +21,7 @@
 }
 
 #mainNav .navbar-brand {
-    padding: 0;    
+    color: white;  
 }
 
 #mainNav .navbar-brand img {
