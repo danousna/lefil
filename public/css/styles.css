@@ -159,3 +159,12 @@ label {
 .select select:disabled ~ .select__arrow {
     border-top-color: #ccc;
 }
+
+.pdf-link:hover {
+    opacity: .75;
+}
+
+.pdf-link img {
+    border: 1px solid #ccc;
+    width: 150px;
+}

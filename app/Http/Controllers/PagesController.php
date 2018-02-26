@@ -101,7 +101,7 @@ class PagesController extends Controller
 
     public function getIssues() 
     {
-        $issues = Issue::all();
+        $issues = Issue::where('status', 'published')->orderBy('number', 'desc')->get();
         return view('pages.issues')->withIssues($issues);
     }
 

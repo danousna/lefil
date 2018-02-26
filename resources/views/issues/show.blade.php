@@ -16,6 +16,15 @@
 
             <hr>
 
+            <h4 class="my-4">Version pdf</h4>
+            <div class="text-center">
+                @if ($issue->pdf != '')
+                    <a class="pdf-link" href="{{ asset('storage/'.$issue->pdf) }}"><img src="{{ asset('storage/'.$issue->image) }}"></a>
+                @else
+                    Pas de version pdf disponible.
+                @endif
+            </div>
+
             <h4 class="my-4">Articles</h4>
 
             <div class="table-responsive">
