@@ -79,10 +79,6 @@ header.masthead .hero .borders-top {
     border-radius: 1.2rem 1.2rem 0 0;
 }
 
-header.masthead h3, header.masthead h4 {
-    font-family: 'Open Sans', sans-serif;
-} 
-
 @media only screen and (max-width: 992px) {
     header.masthead .hero {
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);

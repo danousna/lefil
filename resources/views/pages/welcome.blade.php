@@ -6,64 +6,6 @@
 
 <!-- Page Header -->
 @if ($articles->count() > 0)
-    <header class="masthead" style="display: none;">
-        <div id="heroesArticle" class="carousel slide" data-ride="carousel" data-interval='false'>
-            <ol class="carousel-indicators">
-                <?php $count = 0 ?>
-                @foreach ($articles->slice(0, 3) as $article)
-                    <li data-target="#heroesArticle" data-slide-to="{{ $count }}" class="{{( $count == 0) ? "active" : "" }}"></li>
-                    <?php $count++ ?>
-                @endforeach
-            </ol>
-
-            <div class="carousel-inner">
-                @foreach ($articles->slice(0, 3) as $article)
-                    <div class="carousel-item {{ ($article == $articles->first()) ? "active" : "" }} " style="height: 100%">
-                        <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/blur-'.$article->image) }}');" @endif></div>
-                        <div class="container-fluid">
-                            <div class="row"> 
-                                <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
-                                <a class="d-block col-xl-6 col-lg-8 col-10 mx-auto mt-4 hero px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}');" @endif>
-                                    <div class="bg-white p-4 title">
-                                        <h2>
-                                            {{ $article->title }}
-                                        </h2>
-                                        <h4 class="font-weight-normal subtitle">
-                                            @if ($article->issue_id)
-                                                <b>{{ $article->issue->number }}</b>
-                                                |
-                                            @endif
-                                            <i>{{ $article->category->name }}</i>
-                                            |
-                                            @if ($article->anonymous)
-                                                <span>  
-                                                    Anonyme
-                                                </span>
-                                            @else    
-                                                <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
-                                                    {{ $article->user->username }}
-                                                </span>
-                                            @endif
-                                            |
-                                            {{ date('d/m/Y', strtotime($article->created_at)) }}
-                                        </h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <a class="carousel-control-prev" href="#heroesArticle" role="button" data-slide="prev">
-                <img src="{{ asset('img/circled-arrow-white.svg') }}" width="70px" style="transform: rotate(180deg);">
-            </a>
-            <a class="carousel-control-next" href="#heroesArticle" role="button" data-slide="next">
-                <img src="{{ asset('img/circled-arrow-white.svg') }}" width="70px">
-            </a>
-        </div>
-    </header>
-
     <div class="bg-bubble">
         <header class="masthead">
             <div class="bg-blurry" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/blur-'.$articles->first()->image) }}');" @endif></div>
@@ -73,7 +15,7 @@
                         <?php $date = explode('-', substr($articles->first()->created_at, 0, 10)); ?>
                         <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}');" @endif>
                             <div class="bg-white p-4 borders-top">
-                                <h2>
+                                <h2 class="title">
                                     {{ $articles->first()->title }}
                                 </h2>
                                 <h4 class="font-weight-normal">
@@ -81,7 +23,7 @@
                                         <b>{{ $articles->first()->issue->number }}</b>
                                         |
                                     @endif
-                                    <i>{{ $articles->first()->category->name }}</i>
+                                    {{ $articles->first()->category->name }}
                                     |
                                     @if ($articles->first()->anonymous)
                                         <span>  
@@ -104,13 +46,13 @@
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                             <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                 <div class="bg-white p-4 borders-full">
-                                    <h4>{{ $article->title }}</h4>
+                                    <h4 class="title">{{ $article->title }}</h4>
                                     <small>
                                         @if ($article->issue_id)
                                             <b>{{ $article->issue->number }}</b>
                                             |
                                         @endif
-                                        <i>{{ $article->category->name }}</i>
+                                        {{ $article->category->name }}
                                         |
                                         @if ($article->anonymous)
                                             <span>  
@@ -143,7 +85,7 @@
 
                                 <div class="article">
                                     <h5 class="mb-0">
-                                        <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
+                                        <a class="title" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                             {{ $article->title }}
                                         </a>
                                     </h5>
@@ -152,7 +94,7 @@
                                             <b><a href="{{ route('pages.issue', $article->issue->number) }}">{{ $article->issue->number }}</a></b>
                                             |
                                         @endif
-                                        <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
+                                        <a href="{{ route('pages.category', $article->category['id']) }}">
                                             {{ $article->category->name }}
                                         </a>
                                         |

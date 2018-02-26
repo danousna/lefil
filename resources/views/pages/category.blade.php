@@ -19,7 +19,7 @@
                     <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
 
                     <div class="article">
-                        <h5 class="mb-0">
+                        <h5 class="mb-0 title">
                             <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                 {{ $article->title }}
                             </a>

@@ -20,12 +20,12 @@
 
                     <div class="article">
                         <h5 class="mb-0">
-                            <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
+                            <a class="title" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                 {{ $article->title }}
                             </a>
                         </h5>
                         <small class="text-muted mb-0 mt-1">
-                            <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
+                            <a href="{{ route('pages.category', $article->category['id']) }}">
                                 {{ $article->category->name }}
                             </a>
                             |

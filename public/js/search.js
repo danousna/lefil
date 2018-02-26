@@ -15,7 +15,7 @@ $('#aa-search-input').autocomplete(
             templates: {
                 //'suggestion' templating function used to render a single suggestion
                 suggestion: function(suggestion) {
-                    return '<span>' +
+                    return '<span class="title">' +
                     suggestion._snippetResult.title.value + '...</span><span>' +
                     suggestion._highlightResult.user.value + '</span>';
                 },

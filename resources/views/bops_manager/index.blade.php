@@ -11,8 +11,10 @@
             <div class="div-bubble p-4 my-4">
                 <h4>Gestion des bops</h4>
                     
-                <h5>Attention</h5>
-                <p>Avant de publier une bops, assurez vous que le <b>nom de l'uv est valide</b>, sinon les <b>statistiques</b> des bops ne fonctionneront pas correctement.<br>Un nom d'uv valide a <b>deux lettres majuscules suivis d'un numéro</b>. Example : EN21, MT90 etc...
+                <p>
+                    <h5>Attention :</h5> 
+                    Avant de publier une bops, assurez vous que le <b>nom de l'uv est valide</b>, sinon les <b>statistiques</b> des bops ne fonctionneront pas correctement.<br>Un nom d'uv valide a <b>deux lettres majuscules suivis d'un numéro</b>. Example : EN21, MT90 etc...
+                </p>
 
                 <div class="table-responsive">
                 <table class="table">

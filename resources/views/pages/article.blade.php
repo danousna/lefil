@@ -6,12 +6,12 @@
 
 <!-- Page Header -->
 <header class="masthead post">
-    <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6" @endif></div>
+    <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.4" @endif></div>
     <div class="container">
         <div class="row">
             <div class="post col-lg-8 col-11 my-4 p-4">
                 <div class="post-heading text-center">
-                    <h1 style="font-size: 3rem;">{{ $article->title }}</h1>
+                    <h1 class="title" style="font-size: 3rem;">{{ $article->title }}</h1>
                 </div>
             </div>
         </div>
