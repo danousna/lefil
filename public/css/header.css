@@ -2,9 +2,12 @@
 
 header.masthead {
     position: relative;
-    height: 500px;
     background-color: black;
     z-index: 0;
+}
+
+header.masthead.post {
+    height: 500px;
 }
 
 header.bg-default {
@@ -27,43 +30,8 @@ header.masthead .bg-blurry {
     background-size: cover;
 }
 
-header.masthead .carousel, header.masthead .carousel .carousel-inner {
-    height: 100%;
-}
-
-header.masthead .carousel .carousel-indicators {
-    bottom: -5px;
-}
-
-header.masthead .carousel .carousel-indicators li {
-    border-radius: 50%;
-    width: 7px;
-    height: 7px;
-}
-
-header.masthead .carousel .carousel-control-next, header.masthead .carousel .carousel-control-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-
-    transition: all 0.3s ease-in-out;
-}
-
-header.masthead .carousel .carousel-control-prev:hover {
-    transform: scale(1.05) translate(-5%, -50%);
-}
-
-header.masthead .carousel .carousel-control-next:hover {
-    transform: scale(1.05) translate(5%, -50%);   
-}
-
 header.masthead .hero {
     position: relative;
-    height: 450px;
     background-color: white;
     border-radius: 1.2rem;
 
@@ -95,41 +63,29 @@ header.masthead .hero:hover::after {
     opacity: 1;
 }
 
-header.masthead .hero .title {
+header.masthead .hero-lg {
+    height: 450px;
+}
+
+header.masthead .hero-md {
+    height: 225px;
+}
+
+header.masthead .hero .borders-full {
+    border-radius: .8rem;
+}
+
+header.masthead .hero .borders-top {
     border-radius: 1.2rem 1.2rem 0 0;
 }
 
+header.masthead h3, header.masthead h4 {
+    font-family: 'Open Sans', sans-serif;
+} 
+
 @media only screen and (max-width: 992px) {
-    header.masthead .carousel .carousel-control-prev {
-        display: none;
-    }
-
-    header.masthead .carousel .carousel-control-next {
-        display: none;
-    }
-
     header.masthead .hero {
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    header.masthead .carousel .carousel-control-prev {
-        left: 50px;
-    }
-
-    header.masthead .carousel .carousel-control-next {
-        right: 50px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    header.masthead .carousel .carousel-control-prev {
-        left: 250px;
-    }
-
-    header.masthead .carousel .carousel-control-next {
-        right: 250px;
     }
 }
 

@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Page Header -->
-<header class="masthead">
+<header class="masthead post">
     <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.6" @endif></div>
     <div class="container">
         <div class="row">
