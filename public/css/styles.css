@@ -77,7 +77,7 @@ blockquote {
 
 .div-bubble {
     background-color: white;
-    border-radius: .75rem;
+    border-radius: 2px;
 }
 
 label {
