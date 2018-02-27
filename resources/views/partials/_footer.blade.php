@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-sm py-4">
                 <div class="text-center logo">
-                    <h4><a class="title" href="/">Le Fil</a></h4>
+                    <h4><a class="title" href="/"><img style="width: 120px" src="{{ asset('Logo-gray.svg') }}"></a></h4>
                 </div>
                 <h6 class="mt-3 title">Le journal des étudiants de l'UTC</h6>
                 <span class="about">Le Fil est le torchon bimensuel gratuit des étudants tiré à 600 exemplaires. Chaque article n'engage que la responsabilité de son auteur.</span>
