@@ -33,7 +33,7 @@ header.masthead .bg-blurry {
 header.masthead .hero {
     position: relative;
     background-color: white;
-    border-radius: 1.2rem;
+    border-radius: 7px;
 
     background-size: cover;
     background-position: center center;
@@ -49,7 +49,7 @@ header.masthead .hero::after {
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    border-radius: 1.2rem;
+    border-radius: 7px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
@@ -72,11 +72,11 @@ header.masthead .hero-md {
 }
 
 header.masthead .hero .borders-full {
-    border-radius: .8rem;
+    border-radius: 7px;
 }
 
 header.masthead .hero .borders-top {
-    border-radius: 1.2rem 1.2rem 0 0;
+    border-radius: 7px 7px 0 0;
 }
 
 @media only screen and (max-width: 992px) {

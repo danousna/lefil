@@ -9,7 +9,7 @@
     <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.4" @endif></div>
     <div class="container">
         <div class="row">
-            <div class="post col-lg-8 col-11 my-4 p-4">
+            <div class="post col-lg-8 col-12 my-4 p-4">
                 <div class="post-heading text-center">
                     <h1 class="title" style="font-size: 3rem;">{{ $article->title }}</h1>
                 </div>
@@ -22,7 +22,7 @@
 
     <!-- Post Content -->
     <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
+        <div class="col-xl-6 col-lg-8 col-12 mx-auto p-4 text-center">
             @if ($article->issue_id)
                 <b><a href="{{ route('pages.issue', $article->issue->number) }}">{{ $article->issue->number }}</a></b>
                 |

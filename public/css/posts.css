@@ -64,7 +64,7 @@ header.masthead .post {
 
 .article img {
     width: 100% !important;
-    border-radius: .75rem;
+    border-radius: 2px;
 }
 
 .comment {

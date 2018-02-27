@@ -11,7 +11,7 @@
             <div class="bg-blurry" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/blur-'.$articles->first()->image) }}');" @endif></div>
             <div class="container">
                 <div class="row py-4">
-                    <div class="col-md-8 col-11 mx-auto">
+                    <div class="col-md-8 col-12 mx-auto">
                         <?php $date = explode('-', substr($articles->first()->created_at, 0, 10)); ?>
                         <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}');" @endif>
                             <div class="bg-white p-4 borders-top">
@@ -41,7 +41,7 @@
                         </a>
                     </div>
             
-                    <div class="col-md-4 col-11 mx-auto">
+                    <div class="col-md-4 col-12 mx-auto">
                         @foreach ($articles->slice(1, 2) as $article)
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                             <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
@@ -76,7 +76,7 @@
 
         <div class="container">
             <div class="row py-4 bg-bubble">
-                <div class="col-md-8 col-11 mx-auto">
+                <div class="col-md-8 col-12 mx-auto">
                     <div class="div-bubble my-4 p-4">
                         <h2 class="mb-3">Articles :</h2>                   
                         @if ($articles->count() > 3) 
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-11 mx-auto">
+                <div class="col-md-4 col-12 mx-auto">
 
                     <div class="div-bubble my-4 p-4">
                         <h2 class="mb-3"><a href="/bops">Bop's :</a></h2>

@@ -51,7 +51,7 @@
 
     .dropdown-menu::before {
         top: -16px;
-        right: 50%;
+        right: 20px;
         transform: translateX(50%);
         border: 8px solid transparent;
         border-bottom-color: rgba(27,31,35,0.15);
@@ -59,7 +59,7 @@
 
     .dropdown-menu::after {
         top: -14px;
-        right: 50%;
+        right: 20px;
         transform: translateX(50%);
         border: 7px solid transparent;
         border-bottom-color: #fff;
@@ -87,12 +87,13 @@
 }
 
 .dropdown .dropdown-menu {
-    border-radius: 2px;
+    border-radius: 5px;
     min-width: 200px;
     padding: 0;
     top: 30px;
-    left: 50%;
-    box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+    left: 0;
+    box-shadow: 0 3px 12px rgba(27,31,35,0.1);
+    border: 1px solid rgba(0,0,0,.1);
 }
 
 .dropdown .dropdown-toggle {
@@ -102,6 +103,25 @@
 
 .dropdown .dropdown-menu .dropdown-item {
     padding: .5rem 1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+    background: #EFEFEF;
+    color: black;
+}
+
+.dropdown .dropdown-menu .dropdown-item:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.dropdown .dropdown-menu .dropdown-item:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown .dropdown-menu .dropdown-item i {
+    margin-right: .5rem;
 }
 
 .dropdown .dropdown-menu .dropdown-divider {
