@@ -52,7 +52,6 @@
                         <div class="dropdown-menu">
 
                             <a class="dropdown-item" href="/articles"><i class="fas fa-file-alt fa-fw"></i> Mes articles</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('pages.user', Auth::user()->username) }}"><i class="fas fa-user fa-fw"></i> Page publique</a>
                             <a class="dropdown-item" href="/account"><i class="fas fa-cog fa-fw"></i> Paramètres</a>
                             <div class="dropdown-divider"></div>
