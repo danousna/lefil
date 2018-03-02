@@ -10,7 +10,7 @@ class BopsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'clearance', 'role:member|president|admin']);
+        $this->middleware(['auth', 'role:member|president|admin']);
     }
 
     /**

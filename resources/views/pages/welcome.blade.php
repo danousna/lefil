@@ -45,7 +45,7 @@
                         @foreach ($articles->slice(1, 2) as $article)
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                             <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
-                                <div class="bg-white p-4 borders-full">
+                                <div class="bg-white p-3 borders-full">
                                     <h4 class="title">{{ $article->title }}</h4>
                                     <small>
                                         @if ($article->issue_id)
