@@ -7,12 +7,12 @@
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
+        <div class="col-md-8 col-12 mx-auto p-4 text-center">
             <h2>Rubriques</h2>
         </div>
     </div>
-    <div class="row py-4 pb-5 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-10 mx-auto my-4 p-4">
+    <div class="row py-4 bg-bubble">
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
 
             @foreach ($categories as $category)
                 <div class="article">
@@ -26,7 +26,8 @@
                         <br>
                         <div class="ml-3"> 
                         @foreach ($category->articles->where('status', 'published') as $article)
-                            <a class="title" href="">
+                            <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
+                            <a class="title" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                 {{ $article->title }}
                             </a>
                         @endforeach

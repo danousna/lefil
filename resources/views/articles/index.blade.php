@@ -7,7 +7,7 @@
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row py-4 bg-bubble">
-        <div class="col-xl-6 col-lg-8 col-10 mx-auto">
+        <div class="col-md-8 col-12 mx-auto">
             @foreach ($articles as $article)
                 <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
                 <div class="div-bubble article p-4 my-4">

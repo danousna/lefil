@@ -14,7 +14,7 @@
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
             <form id="article-form" method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 

@@ -9,7 +9,7 @@
     <div class="bg-blurry" @if ($article->image != "") style="background-image: url('{{ asset('storage/'.$article->image) }}'); opacity: 0.4" @endif></div>
     <div class="container">
         <div class="row">
-            <div class="post col-lg-8 col-12 my-4 p-4">
+            <div class="post col-md-8 col-12 my-4 p-4">
                 <div class="post-heading text-center">
                     <h1 class="title" style="font-size: 3rem;">{{ $article->title }}</h1>
                 </div>
@@ -19,13 +19,12 @@
 </header>
 
 <div class="container-fluid">
-
     <!-- Post Content -->
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-12 mx-auto p-4 text-center">
+    <div class="row py-4 bg-bubble">
+        <div class="col-md-8 col-12 mx-auto mt-4 mb-4 p-4 div-bubble article">
             @if ($article->issue_id)
                 <b><a href="{{ route('pages.issue', $article->issue->number) }}">{{ $article->issue->number }}</a></b>
-                |
+                /
             @endif
             <a class="font-italic" href="{{ route('pages.category', $article->category['id']) }}">
                 {{ $article->category->name }}</a>
@@ -39,21 +38,14 @@
                     {{ $article->user->username }}
                 </a>
             @endif
-            |
             {{ date('d/m/Y', strtotime($article->created_at)) }}
             |
             <a href="#comments">{{ $count }} commentaires</a>
         </div>
-    </div>
-    <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4 article">
+        <div class="col-md-8 col-12 mx-auto mb-4 p-4 div-bubble article">
             {!! $article->body !!}
         </div>
-    </div>
-
-    <!-- Comments -->
-    <div class="row bg-bubble pb-4">
-        <div id="comments" class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
+        <div class="col-md-8 col-12 mx-auto mb-4 p-4 div-bubble article">
             <h4>{{ $count }} commentaires :</h4>
 
             @if ($comments)    
