@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-11 mx-auto my-4 p-4">
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
             
             <h3 class="mb-4">Numéro {{ $issue->number }} {{ ($issue->titre) ? ": ".$issue->titre : "" }}</h3>
             

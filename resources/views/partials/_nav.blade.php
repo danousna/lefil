@@ -1,12 +1,12 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+<nav class="navbar navbar-expand-md navbar-light" id="mainNav">
     <div class="container">
         <a class="navbar-brand title" href="/"><img src="{{ asset('Logo.svg') }}"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <div class="ml-md-2">
+            <div class="ml-md-2 my-md-0 my-2 mt-3">
                 <div id="aa-input-container" class="aa-input-container input-group search-div">
                     <input id="aa-search-input" class="aa-input-search form-control search-input" type="search" placeholder="Rechercher des articles" name="search" autocomplete="off">
                 </div>

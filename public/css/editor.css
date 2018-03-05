@@ -6,6 +6,10 @@
     border-top-right-radius: 2px
 }
 
+.editor-toolbar.fullscreen {
+    top: 57px;
+}
+
 .editor-toolbar:hover {
     opacity: 1;
 }
@@ -118,4 +122,8 @@
 
 .CodeMirror img {
     width: 100% !important;
+}
+
+.CodeMirror-fullscreen {
+    top: 106px;
 }

@@ -11,8 +11,8 @@
             <h2>Numéros</h2>
         </div>
     </div>
-    <div class="row py-4 pb-5 bg-bubble">
-        <div class="div-bubble col-xl-6 col-lg-8 col-10 mx-auto my-4 p-4">
+    <div class="row py-4 bg-bubble">
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
 
             @foreach ($issues->where('status', 'published') as $issue)
                 <div>
