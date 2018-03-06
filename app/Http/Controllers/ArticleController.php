@@ -169,7 +169,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // Validate the data.
-        if ($request->input('slug') == $article->slug) {
+        if (strtolower($request->input('slug')) == strtolower($article->slug)) {
             $this->validate($request, array(
                 'title'         => 'required|max:255',
                 'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',
