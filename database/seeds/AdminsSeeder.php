@@ -19,7 +19,7 @@ class AdminsSeeder extends Seeder
             'name' => 'Natan Danous',
             'username' => 'danousna',
             'email' => 'natan.danous@etu.utc.fr',
-            'password' => bcrypt('natandanous'),
+            'password' => bcrypt('42utcNatan'),
         ]);
 
         $natan->assignRole('admin');

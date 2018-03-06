@@ -193,7 +193,7 @@
     <div class="container-fluid">
         <div class="row py-4 pb-5 bg-bubble">
             <div class="div-bubble col-xl-6 col-lg-8 col-10 mx-auto my-4 p-4">
-                 <span class="d-block text-center">Pas d'articles, ce n'est pas normal.</span>
+                 <span class="d-block text-center">Pas d'articles pour le moment.</span>
              </div>
          </div>
      </div>

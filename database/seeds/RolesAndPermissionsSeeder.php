@@ -17,7 +17,6 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'administer roles & permissions']);
         Permission::create(['name' => 'manage user']);
 
-        Permission::create(['name' => 'manage article']);
         Permission::create(['name' => 'publish article']);
 
         Permission::create(['name' => 'manage category']);
@@ -36,23 +35,12 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // PRESIDENT
         $role = Role::create(['name' => 'president']);
-        // Article
-        $role->givePermissionTo('manage article');
         $role->givePermissionTo('publish article');
-        // Category
         $role->givePermissionTo('manage category');
-        // User Category
         $role->givePermissionTo('manage user & category');
 
         // MEMBER
         $role = Role::create(['name' => 'member']);
-        // Article
-        $role->givePermissionTo('manage article');
         $role->givePermissionTo('publish article');
-        
-        // WRITER
-        $role = Role::create(['name' => 'writer']);
-        // Article
-        $role->givePermissionTo('manage article');
     }
 }
