@@ -70,6 +70,12 @@
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #mainNav .search-input {
+        width: 160px !important;
+    }
+}
+
 #mainNav .search-div {
     background: #404448 !important;
     border-radius: 3px;
