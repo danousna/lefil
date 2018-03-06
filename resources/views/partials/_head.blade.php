@@ -30,5 +30,3 @@
 <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 <link href="{{ asset('css/posts.css') }}" rel="stylesheet">
 <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
