@@ -190,20 +190,15 @@
     </div>
 @else
     <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="row py-4 pb-5 bg-bubble">
-            <div class="div-bubble col-xl-6 col-lg-8 col-10 mx-auto my-4 p-4">
-                 <span class="d-block text-center">Pas d'articles, ce n'est pas normal.</span>
+    <div class="bg-bubble">
+        <div class="container">
+            <div class="row py-4">
+                <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
+                     <p class="text-center">Pas d'articles pour le moment.</p>
+                 </div>
              </div>
          </div>
      </div>
 @endif
-
-@endsection
-
-@section('scripts')
-
-    <script src="{{ asset('js/jquery.bcSwipe.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
 
 @endsection
