@@ -113,14 +113,12 @@ class UserController extends Controller
             $this->validate($request, array(
                 'name'      => 'required|string|max:255',
                 'email'     => 'required|string|email|max:255|unique:users,email,'.$id,
-                'password'  => 'required|string|min:6|confirmed',
             ));
         } else {
             $this->validate($request, array(
                 'name'      => 'required|string|max:255',
                 'username'  => 'required|alpha_dash|max:255|unique:users',
                 'email'     => 'required|string|email|max:255|unique:users,email,'.$id,
-                'password'  => 'required|string|min:6|confirmed',
             ));
         }
 
@@ -128,7 +126,6 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
         $user->save();
 
         $roles = $request['roles'];
