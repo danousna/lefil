@@ -88,6 +88,20 @@
     </div>
 </div>
 
+<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="title">Aide Markdown</h3>
+                <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body article">
+                {!! $mdhelp !!}
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
@@ -175,13 +189,17 @@
                 },
                 {
                     name: "guide",
-                    action: "https://simplemde.com/markdown-guide",
+                    action: openHelpModal,
                     className: "fas fa-fw fa-question-circle",
                     title: "Aide Markdown",
                 },
             ],
             // promptURLs: true,
         });
+
+        function openHelpModal(editor) {
+            $('#helpModal').modal({show:true});
+        }
 
         @if ($user->articles()->count() == 0)
             $.get("{{ asset('welcome.md') }}", function(response) {

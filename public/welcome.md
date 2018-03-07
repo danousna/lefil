@@ -2,10 +2,12 @@
 
 L'éditeur a automatiquement été mis en mode ***aperçu***, vous pous pouvez repasser en mode ***édition*** en cliquant sur l'icône en forme **d'oeil**.
 
-Les articles sont rédigés au format **Markdown**. Il permet une conversion directe en HTML tout en étant plus abordable que celui-ci. Dans le cas du Fil, cela permet une consistence dans le style typographique des articles. 
-
+Les articles sont rédigés au format **Markdown**. Il permet une conversion directe en HTML tout en étant plus abordable que celui-ci. Dans le cas du Fil, cela permet une **consistence dans le style typographique** des articles. 
 
 Afin de faciliter l'apprentissage du Markdown, l'éditeur dispose d'une **barre d'outils** qui fonctionne comme un éditeur de texte normal.
+
+Ce guide ne se réaffichera pas une fois que vous aurez écrit votre premier article. Vous pouvez néanmoins retrouver un **aide mémoire** en cliquant sur **l'icone en forme de point d'interrogation**
+
 
 ---
 # Titres
@@ -21,6 +23,7 @@ Pour créer un titre, il suffit d'insérer un signe **#** par niveau de titre.
 # Titre de niveau 1
 ## Titre de niveau 2
 ### Titre de niveau 3
+
 
 ---
 # Styles de texte
@@ -45,6 +48,31 @@ Pour créer un titre, il suffit d'insérer un signe **#** par niveau de titre.
 ***ce texte est en gras et en italique***
 ```
 ***ce texte est en gras et en italique***.
+
+
+---
+# Insertions
+
+## Liens
+
+```
+[Je suis un lien](https://www.google.com)
+```
+[Je suis un lien](https://example.com)
+
+## Images
+
+```
+![Je suis une image](https://www.w3schools.com/howto/img_fjords.jpg)
+```
+![Je suis une image](https://www.w3schools.com/howto/img_fjords.jpg)
+
+
+---
+### Remarque importante
+
+Si vous souhaitez insérer votre **propre image**, utiliser un site tel que [**Noel Shack**](https://www.noelshack.com/) ou [**Imgur**](https://imgur.com/) pour **héberger** votre image puis **copier le lien** et insérer tel que montré ci-dessus.
+
 
 ---
 # Listes
@@ -75,22 +103,6 @@ Pour créer un titre, il suffit d'insérer un signe **#** par niveau de titre.
  * Sous-élément
  * Autre sous-élément
 
----
-# Insertions
-
-## Liens
-
-```
-[Je suis un lien](https://www.google.com)
-```
-[Je suis un lien](https://example.com)
-
-## Images
-
-```
-![Je suis une image](https://www.w3schools.com/howto/img_fjords.jpg)
-```
-![Je suis une image](https://www.w3schools.com/howto/img_fjords.jpg)
 
 ---
 # Tableaux
@@ -123,6 +135,7 @@ Markdown | Moins | Joli
 *Toujours* | `affiché` | **correctement**
 1 | 2 | 3
 
+
 ---
 # Citations
 
@@ -130,6 +143,7 @@ Markdown | Moins | Joli
 > Les citations sont très pratiques dans les mails pour indiquer le texte auquel on répond.
 ```
 > Les citations sont très pratiques dans les mails pour indiquer le texte auquel on répond.
+
 
 ---
 # Séparateur horizontal
