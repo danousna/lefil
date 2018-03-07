@@ -26,6 +26,8 @@
                     <input type="file" id="image" name="image">
                     <span class="btn btn-secondary mr-3">Image de couverture</span>
                     <span class="label" data-js-label>Aucun ficher sélectionné</label>
+                    <br>
+                    <small class="text-muted">L'image de couverture est facultative (mais ça rends beaucoup mieux quand même)</small>
                 </div>
 
                 <div class="form-group">
@@ -67,6 +69,7 @@
 
                 <div class="form-group">
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" value="{{ $article->slug }}" required>
+                    <small class="text-muted">Le lien est un identifiant unique pour tous les articles. Si vous n'avez pas d'idées, mettez le titre de votre article séparé par des tirets. (ex : <b>test-lien-article</b>)</small>
                 </div>
 
                 <div class="form-group">
