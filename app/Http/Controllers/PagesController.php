@@ -21,7 +21,7 @@ class PagesController extends Controller
         $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(20);
         $categories = Category::all();
         $issues = Issue::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
-        $comments = Comment::orderBy('id', 'desc')->take(4)->get();
+        $comments = Comment::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         $bops = Bops::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         return view('pages.welcome')
             ->withArticles($articles)

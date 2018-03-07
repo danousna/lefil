@@ -25,7 +25,9 @@
                 <div class="form-group file-input">
                     <input type="file" id="image" name="image">
                     <span class="btn btn-secondary mr-3">Image de couverture</span>
-                    <span class="label" data-js-label>Aucun ficher sélectionné</label>
+                    <span class="label" data-js-label>Aucun ficher sélectionné</span>
+                    <br>
+                    <small class="text-muted">L'image de couverture est facultative (mais ça rends beaucoup mieux quand même)</small>
                 </div>
 
                 <div class="form-group">
@@ -60,6 +62,7 @@
 
                 <div class="form-group">
                     <input id="slug" type="text" class="form-control" name="slug" placeholder="Lien" value="{{ old('slug') }}" required>
+                    <small class="text-muted">Le lien est un identifiant unique pour tous les articles. Si vous n'avez pas d'idées, mettez le titre de votre article séparé par des tirets. (ex : <b>test-lien-article</b>)</small>
                 </div>
 
                 <div class="form-group">
@@ -71,6 +74,20 @@
 
                 <button id="submit-btn" type="submit" class="btn btn-primary">Enregistrer</button>
             </form>
+        </div>
+    </div>
+</div>
+
+<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="title">Aide Markdown</h3>
+                <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body article">
+                {!! $mdhelp !!}
+            </div>
         </div>
     </div>
 </div>
@@ -162,13 +179,17 @@
                 },
                 {
                     name: "guide",
-                    action: "https://simplemde.com/markdown-guide",
+                    action: openHelpModal,
                     className: "fas fa-fw fa-question-circle",
                     title: "Aide Markdown",
                 },
             ],
             // promptURLs: true,
         });
+
+        function openHelpModal(editor) {
+            $('#helpModal').modal({show:true});
+        }
 
         @if ($user->articles()->count() == 0)
             $.get("{{ asset('welcome.md') }}", function(response) {

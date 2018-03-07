@@ -45,8 +45,15 @@ class ArticleController extends Controller
         $user = User::find(Auth::user()->id);
         $categories = Category::all();
         $issues = Issue::all()->where('status', 'draft');
+
+        $Parsedown = new Parsedown();
+        $mdhelp = $Parsedown->text(File::get(public_path('cheatsheet.md')));
         
-        return view('articles.create')->withUser($user)->withCategories($categories)->withIssues($issues);
+        return view('articles.create')
+            ->withUser($user)
+            ->withCategories($categories)
+            ->withIssues($issues)
+            ->withMdhelp($mdhelp);
     }
 
     /**
@@ -150,7 +157,16 @@ class ArticleController extends Controller
             $user = User::find(Auth::user()->id);
             $categories = Category::all();
             $issues = Issue::all();
-            return view('articles.edit')->withArticle($article)->withUser($user)->withCategories($categories)->withIssues($issues);
+
+            $Parsedown = new Parsedown();
+            $mdhelp = $Parsedown->text(File::get(public_path('cheatsheet.md')));
+
+            return view('articles.edit')
+                ->withArticle($article)
+                ->withUser($user)
+                ->withCategories($categories)
+                ->withIssues($issues)
+                ->withMdhelp($mdhelp);
         } else {
             Session::flash('error', 'Vous ne pouvez pas modifier cet article');
             return redirect('/');
@@ -169,7 +185,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // Validate the data.
-        if ($request->input('slug') == $article->slug) {
+        if (strtolower($request->input('slug')) == strtolower($article->slug)) {
             $this->validate($request, array(
                 'title'         => 'required|max:255',
                 'image'         => 'max:2200|image|mimes:jpeg,jpg,png,gif,svg',

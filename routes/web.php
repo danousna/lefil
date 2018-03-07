@@ -46,6 +46,10 @@ Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@
 // Archive
 Route::get('archive', 'PagesController@getArchive');
 
+// Help
+Route::get('help', 'HelpController@getIndex')->name('help');
+Route::get('help/markdown', 'HelpController@getMarkdown')->name('help.markdown');
+
 
 /*
     Auth facing pages
@@ -99,6 +103,8 @@ Route::resource('issues', 'IssueController');
 Route::get('issues/{id}/publish', 'IssueController@publish')->name('issues.publish');
 
 // Comments
+Route::get('comments', 'CommentController@index')->name('comments.index');
+Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
 
 // Bops

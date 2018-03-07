@@ -13,7 +13,11 @@
         @endif
     </div>
     <div class="comment-body">
-        <p>{{ $comment['body'] }}</p>
+        @if ($comment['status'] == 'deleted')
+            <p>Ce commentaire a été supprimé.</p>
+        @else
+            <p>{{ $comment['body'] }}</p>
+        @endif
     </div>
     <hr>
 </div>

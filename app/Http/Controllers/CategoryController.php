@@ -99,7 +99,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if ($category->name != $request['name']) {
+        if (strtolower($category->name) != strtolower($request['name'])) {
             $this->validate($request, array(
                 'name' => 'required|max:255|unique:categories,name'
             ));

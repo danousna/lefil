@@ -34,8 +34,10 @@
                                 <a class="dropdown-item" href="/publish"><i class="fas fa-check-square fa-fw"></i> Publications</a>
                                 <a class="dropdown-item" href="/bops_manager"><i class="fas fa-inbox fa-fw"></i> Bop's</a>
                                 @hasanyrole('admin|president')
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/categories"><i class="fas fa-list-alt fa-fw"></i> Rubriques</a>
                                     <a class="dropdown-item" href="/issues"><i class="fas fa-book fa-fw"></i> Numéros</a>
+                                    <a class="dropdown-item" href="/comments"><i class="fas fa-comments fa-fw"></i> Commentaires</a>
                                 @endhasanyrole
                                 @role('admin')
                                     <div class="dropdown-divider"></div>

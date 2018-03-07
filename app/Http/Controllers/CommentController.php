@@ -23,7 +23,12 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->hasRole('admin|president')) {
+            $comments = Comment::where('status', 'published')->orderBy('id', 'desc')->take(50)->get();
+            return view('comments.index')->withComments($comments);
+        } else {
+            return redirect()->route('pages.welcome');
+        }
     }
 
     /**
@@ -109,6 +114,13 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->status = "deleted";
+        $comment->save();
+
+        Session::flash('success', 'Commentaire supprimé.');
+
+        // Redirect to another page.
+        return redirect()->route('comments.index');
     }
 }
