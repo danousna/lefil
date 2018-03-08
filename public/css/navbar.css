@@ -68,6 +68,10 @@
     .aa-dropdown-menu {
         width: 400px !important;
     }
+
+    #mainNav .search-input {
+        font-size: 13px !important;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -83,7 +87,7 @@
 }
 
 #mainNav .search-input {
-    font-size: 13px;
+    font-size: 16px;
     border: 0;
     width: 230px;
     padding: 6px 8px;

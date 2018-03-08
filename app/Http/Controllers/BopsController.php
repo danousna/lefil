@@ -59,7 +59,8 @@ class BopsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bops = Bops::find($id);
+        return view('bops_manager.edit')->withBops($bops);
     }
 
     /**
@@ -71,7 +72,20 @@ class BopsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'uv'        => 'required|max:4|regex:/[A-Z0-9]/',
+            'body'      => 'required',
+        ));
+
+        $bops = Bops::find($id);
+
+        $bops->uv = $request->uv;
+        $bops->body = $request->body;
+
+        $bops->save();
+        
+        Session::flash('success', "Bops modifiée.");
+        return redirect()->route('bops_manager.index');
     }
 
     /**
@@ -82,6 +96,9 @@ class BopsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bops = Bops::find($id);
+        $bops->delete();
+        Session::flash('success', 'Bops supprimée.');
+        return redirect()->route('bops_manager.index');
     }
 }
