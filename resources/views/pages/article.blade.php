@@ -38,6 +38,7 @@
                     {{ $article->user->username }}
                 </a>
             @endif
+            |
             {{ date('d/m/Y', strtotime($article->created_at)) }}
             |
             <a href="#comments">{{ $count }} commentaires</a>
@@ -45,7 +46,7 @@
         <div class="col-md-8 col-12 mx-auto mb-4 p-4 div-bubble article">
             {!! $article->body !!}
         </div>
-        <div class="col-md-8 col-12 mx-auto mb-4 p-4 div-bubble article">
+        <div id="comments" class="col-md-8 col-12 mx-auto mb-4 p-4 div-bubble article">
             <h4>{{ $count }} commentaires :</h4>
 
             @if ($comments)    
