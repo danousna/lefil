@@ -22,7 +22,14 @@
                             <b>{{ $bop->uv }}</b> : {{ $bop->body }} <small class="text-muted">| {{ $bop->created_at }}</small>
                         </td>
                         <td class="px-0 text-right" style="border: none !important;">
+                            <a href="{{ route('bops_manager.edit', $bop->id) }}" class="btn btn-sm btn-primary">Modifier</a>
                             <a href="{{ route('bops_manager.show', $bop->id) }}" class="btn btn-sm btn-success">Publier</a>
+                            <form method="POST" action="{{ route('bops_manager.destroy', $bop->id) }}" style="display: inline-block;">
+                                {{ csrf_field() }}
+
+                                <input type="submit" value="Supprimer" class="btn btn-danger btn-sm">
+                                {{ method_field('DELETE') }}
+                            </form>
                         </td>
                     </tr>
                 @endforeach
