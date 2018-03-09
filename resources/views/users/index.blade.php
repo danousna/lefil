@@ -6,19 +6,16 @@
 
 <!-- Main Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-11 mx-auto p-4 text-center">
-            Gestion des utilisateurs
-        </div>
-    </div>
     <div class="row py-4 bg-bubble">
-        <div class="div-bubble col-11 mx-auto my-4 p-4">
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
+            <h3 class="mb-4">Gestion des utilisateurs</h3>
+
             <div class="table-responsive">
-                <table class="table table-hover table-bordered" style="font-size: 1rem">
+                <table class="table table-bordered" style="font-size: 1rem">
                     <thead>
                         <th>#</th>
                         <th>Nom</th>
-                        <th>Nom d'utilisateur</th>
+                        <th>Pseudo</th>
                         <th>Email</th>
                         <th>Inscription</th>
                         <th>Rôle</th>
@@ -35,17 +32,11 @@
                             <td>{{ date('d/m/Y H:i', strtotime($user->created_at)) }}</td>
                             <td>{{ $user->roles()->pluck('name')->implode(' ') }}</td>
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary btn-sm">Modifier</a>
-                                {{-- <form method="POST" action="{{ route('users.destroy', $user->id) }}">
-                                    {{ csrf_field() }}
-                                    <input type="submit" value="Supprimer" class="btn btn-danger btn-sm">
-                                    {{ method_field('DELETE') }}
-                                </form> --}}
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-block btn-secondary btn-sm">Modifier</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
-
                 </table>
             </div>
 
