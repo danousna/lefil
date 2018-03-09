@@ -103,7 +103,14 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->status = "published";
+        $comment->save();
+
+        Session::flash('success', 'Suppression annulée.');
+
+        // Redirect to another page.
+        return redirect()->route('comments.index');
     }
 
     /**
