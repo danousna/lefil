@@ -77,8 +77,7 @@
         <div class="container">
             <div class="row py-4 bg-bubble">
                 <div class="col-md-8 col-12 mx-auto">
-                    <div class="div-bubble my-4 p-4">
-                        <h2 class="mb-3">Articles :</h2>                   
+                    <div class="div-bubble my-4 p-4">                
                         @if ($articles->count() > 3) 
                             @foreach ($articles->slice(3, $articles->count()) as $article)
                                 <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
