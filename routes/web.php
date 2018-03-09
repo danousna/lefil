@@ -104,6 +104,7 @@ Route::get('issues/{id}/publish', 'IssueController@publish')->name('issues.publi
 
 // Comments
 Route::get('comments', 'CommentController@index')->name('comments.index');
+Route::put('comments/{id}', 'CommentController@update')->name('comments.update');
 Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
 Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store')->name('comments.store');
 

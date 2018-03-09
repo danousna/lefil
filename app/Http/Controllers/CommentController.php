@@ -24,7 +24,7 @@ class CommentController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('admin|president')) {
-            $comments = Comment::where('status', 'published')->orderBy('id', 'desc')->take(50)->get();
+            $comments = Comment::all();
             return view('comments.index')->withComments($comments);
         } else {
             return redirect()->route('pages.welcome');

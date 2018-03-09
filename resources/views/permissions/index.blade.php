@@ -7,7 +7,7 @@
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row py-4 bg-bubble">
-        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble"> 
+        <div class="col-md-8 col-12 mx-auto my-4 p-4 div-bubble">
             <h3 class="mb-4">Gestion des permissions</h3>
             <div class="table-responsive">
                 <table class="table table-bordered" style="font-size: 1rem">
