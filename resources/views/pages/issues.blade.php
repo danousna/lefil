@@ -16,7 +16,7 @@
 
             @foreach ($issues->where('status', 'published') as $issue)
                 <div>
-                    <a href="{{ route('pages.issue', $issue->number)}}"><b>{{ $issue->number }}</b> - {{ $issue->titre }}</a>
+                    <a href="{{ route('pages.issue', $issue->number)}}"><b>n°{{ $issue->number }}</b> {{($issue->titre != "") ? "- ".$issue->titre : "" }}</a>
                     <span class="ml-3 text-muted">
                         <?php 
                             $date = new DateTime($issue->release_date);

@@ -52,7 +52,7 @@
                             <select class="form-control" name="issue_id">
                                 <option value="" selected>Cet article ne fait pas partie d'un numéro</option>
                                 @foreach ($issues as $issue)
-                                    <option value="{{ $issue->id }}" {{ (old('issue_id') == $issue->id) ? "selected" : "" }}>{{ $issue->titre }} - n°{{ $issue->number }}</option>
+                                    <option value="{{ $issue->id }}" {{ (old('issue_id') == $issue->id) ? "selected" : "" }}>n°{{ $issue->number }} {{ ($issue->titre != "") ? "- ".$issue->titre : "" }}</option>
                                 @endforeach
                             </select>
                             <div class="select__arrow"></div>

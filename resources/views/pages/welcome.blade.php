@@ -143,19 +143,23 @@
                     <div class="div-bubble my-4 p-4">
                         <h2 class="mb-3">Commentaires récents :</h2>
                         @foreach ($comments as $comment)
-                            <div style="font-size: 16px">
-                                <b>
-                                    <a href="{{ route('pages.user', $comment->user->username) }}">
-                                        {{ $comment->user->username }}
-                                    </a>
-                                </b> 
-                                le {{ date('d/m/y à H:m', strtotime($comment->created_at)) }} 
+                            <?php $date = explode('-', substr($comment->article->created_at, 0, 10)); ?>
+                            <div>
                                 <div>
-                                    {{ $comment->body }} @if ($comment->reply_comment_id) <i class="fas fa-reply"></i>@endif 
-                                    <br>
+                                    <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $comment->article->slug . '#' . $comment->id }}">{{ $comment->body }}</a>
                                 </div>
-                                <?php $date = explode('-', substr($comment->article->created_at, 0, 10)); ?>
-                                <small class="font-weight-bold"><a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $comment->article->slug }}">{{ substr($comment->article->title, 0, 47) }} {{ (strlen($comment->article->title) > 47) ? "..." : "" }}</a></small>
+                                <small>
+                                    <b>
+                                        <a href="{{ route('pages.user', $comment->user->username) }}">
+                                            {{ $comment->user->username }}
+                                        </a>
+                                    </b> 
+                                    le {{ date('d/m/y à H:m', strtotime($comment->created_at)) }} 
+                                </small>
+                                <br>
+                                <small>
+                                    <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $comment->article->slug }}">{{ substr($comment->article->title, 0, 47) }} {{ (strlen($comment->article->title) > 47) ? "..." : "" }}</a>
+                                </small>
                             </div>
                             <hr>
                         @endforeach
@@ -164,16 +168,15 @@
                         <h2 class="mb-3">Numéros :</h2>
                         @foreach ($issues as $issue)
                             <?php $date = explode('-', explode(' ', $issue->release_date)[0]); ?>
-                            <div class="media">
-                                <span class="d-flex mr-2"><b><a href="{{ route('pages.issue', $issue->number) }}">{{ $issue->number }} :</a></b></span>
-                                <div class="media-body">
-                                    <a href="{{ route('pages.issue', $issue->number) }}">{{ $issue->titre }}</a><br>
-                                    <small class="text-muted">
-                                        {{ $date[2].'/'.$date[1].'/'.$date[0] }} 
-                                        | 
-                                        {{ $issue->articles->where('status', 'published')->count() }} article(s)
-                                    </small>
-                                </div>
+                            <div>
+                                <a href="{{ route('pages.issue', $issue->number)}}"><b>n°{{ $issue->number }}</b> {{($issue->titre != "") ? "- ".$issue->titre : "" }}
+                                </a>
+                                <br>
+                                <small class="text-muted">
+                                    {{ $date[2].'/'.$date[1].'/'.$date[0] }} 
+                                    | 
+                                    {{ $issue->articles->where('status', 'published')->count() }} article(s)
+                                </small>
                             </div>
                         @endforeach
                     </div>

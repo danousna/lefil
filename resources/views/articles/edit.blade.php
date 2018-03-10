@@ -58,7 +58,7 @@
                                 <option value="" selected>Pas de numéro</option>
                                 @foreach ($issues as $issue)
                                     <option value="{{ $issue->id }}" {{ ($issue->id == $article->issue_id) ? "selected" : "" }}>
-                                        {{ $issue->titre }}
+                                        n°{{ $issue->number }} {{ ($issue->titre != "") ? "- ".$issue->titre : "" }}
                                     </option>
                                 @endforeach
                             </select>

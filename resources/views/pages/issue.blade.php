@@ -9,17 +9,18 @@
     <div class="container">
         <div class="row py-4">
             <div class="col-md-8 col-11 mx-auto">
-                <div class="div-bubble my-4 p-4">          
+                <div class="div-bubble my-4 p-4">
+                    <h2 class="mb-4">n°{{ $issue->number }}</b> {{($issue->titre != "") ? "- ".$issue->titre : "" }}</h2>          
                     @if ($issue->articles->where('status', 'published')->count() > 0)
                         @foreach ($issue->articles->where('status', 'published') as $article)
                             <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
 
                             <div class="article">
-                                <h5 class="mb-0">
+                                <h4 class="mb-0">
                                     <a class="title" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                         {{ $article->title }}
                                     </a>
-                                </h5>
+                                </h4>
                                 <small class="text-muted mb-0 mt-1">
                                     <a href="{{ route('pages.category', $article->category['id']) }}">
                                         {{ $article->category->name }}
