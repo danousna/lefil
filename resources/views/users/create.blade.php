@@ -48,12 +48,12 @@
 
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input id="password" type="text" class="form-control" name="password" required>
+                    <input id="password" type="password" class="form-control" name="password" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirmation">Veuillez confirmer le mot de passe</label>
-                    <input id="password_confirmation" type="text" class="form-control" name="password_confirmation" required>
+                    <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
                 </div>
 
                 <br>
