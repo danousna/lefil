@@ -52,7 +52,10 @@ class IssueController extends Controller
 
         $issue = new Issue;
         $issue->number = $request->number;
-        $issue->titre = $request->titre;
+        if (!$request->titre)
+            $issue->titre = "";
+        else
+            $issue->titre = $request->titre;
         $issue->release_date = $request->release_date;
 
         if ($request->has('pdf')) {    
@@ -126,7 +129,10 @@ class IssueController extends Controller
 
         $issue = Issue::find($id);
         $issue->number = $request->number;
-        $issue->titre = $request->titre;
+        if (!$request->titre)
+            $issue->titre = "";
+        else
+            $issue->titre = $request->titre;
         $issue->release_date = $request->release_date;
 
         if ($request->has('pdf')) {    
