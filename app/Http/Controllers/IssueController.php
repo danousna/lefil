@@ -46,7 +46,7 @@ class IssueController extends Controller
     {
         $this->validate($request, array(
             'number'        => 'required|integer|unique:issues,number',
-            'release_date'  => 'required|date_format:"Y-m-d"|after:now',
+            'release_date'  => 'required|date_format:"Y-m-d"',
             'pdf'           => 'mimes:pdf',
         ));
 
@@ -120,7 +120,7 @@ class IssueController extends Controller
     {
         $this->validate($request, array(
             'number'        => 'required|integer',
-            'release_date'  => 'required|date_format:"Y-m-d"|after:now',
+            'release_date'  => 'required|date_format:"Y-m-d"',
             'pdf'           => 'mimes:pdf',
         ));
 

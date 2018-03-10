@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="release_date">Date de parution</label>
+                    <label for="release_date">Date de parution <small class="text-muted">(format : AAAA-MM-JJ)</small></label>
                     <input type="date" name="release_date" class="form-control" value="{{ $issue->release_date }}" required>    
                 </div>
 

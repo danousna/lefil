@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="released_date">Date de parution</label>
+                    <label for="released_date">Date de parution <small class="text-muted">(format : AAAA-MM-JJ)</small></label>
                     <input type="date" name="release_date" class="form-control" value="{{ old('release_date') }}" required>    
                 </div>
 
