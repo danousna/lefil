@@ -22,7 +22,7 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        $issues = Issue::orderBy('number')->get();
         return view('issues.index')->withIssues($issues);
     }
 
