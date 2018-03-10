@@ -17,7 +17,10 @@
                     <?php $issue->release_date = explode(' ', $issue->release_date)[0]; ?>
                     <tr>
                         <td class="px-0" style="border: none !important;">
-                            <a class="mr-2" href="{{ route('issues.show', $issue->id) }}">{{ $issue->titre }}</a>
+                            <a class="mr-2" href="{{ route('issues.show', $issue->id) }}">n°{{ $issue->number }}</a>
+                        </td>
+                        <td class="px-0" style="border: none !important;">
+                            {{ $issue->titre }}
                         </td>
                         <td class="px-0 text-center" style="border: none !important;">
                             <small>
