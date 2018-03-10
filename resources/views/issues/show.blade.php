@@ -49,6 +49,9 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('articles.show', $article->id) }}" class="btn btn-secondary btn-sm mb-1 mr-1">Voir</a>
+                                    @if ($issue->status == "published" && $article->status != "published")
+                                        <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm mb-1 mr-1">Publier</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
