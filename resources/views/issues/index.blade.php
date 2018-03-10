@@ -39,17 +39,32 @@
                             </td>
                         @endif
                         <td class="px-0 text-right" style="border: none !important;">
-                            <form method="POST" action="{{ route('issues.destroy', $issue->id) }}">
-                                {{ csrf_field() }}
-                                <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-secondary btn-sm">Voir</a>
-                                <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-secondary btn-sm">Modifier</a>
-                                
-                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Les articles liés ne seront pas supprimés.">
-                                    <input type="submit" value="Supprimer" class="btn btn-danger btn-sm">
-                                </span>
+                            <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-secondary btn-sm">Voir</a>
+                            <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">Supprimer</button>
 
-                                {{ method_field('DELETE') }}
-                            </form>
+                            <div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <form method="POST" action="{{ route('issues.destroy', $issue->id) }}">
+                                                {{ csrf_field() }}
+                                                <span>Êtes-vous sûr de vouloir supprimer ce numéro ?</span>
+                                                <hr>
+                                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Annuler</button>
+                                                <input type="submit" value="Supprimer" class="btn btn-danger btn-sm">
+                                                {{ method_field('DELETE') }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
