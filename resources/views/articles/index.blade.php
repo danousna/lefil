@@ -52,10 +52,17 @@
                     @endif
                     
                     @can('publish article')
-                        @if ($article->status == 'draft' && $article->issue_id == '')
-                            <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm">
-                                Publier
-                            </a>
+                        @if ($article->issue_id == '' && $article->status == 'draft')
+                            @if ($article->category->users->where('id', Auth::user()->id)->count() == 0)
+                                <form method="POST" action="{{ route('articles.publish', $article->id) }}" style="display: inline-block;">
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="Demande de publication" class="btn btn-success btn-sm">
+                                </form>
+                            @else
+                                <a href="{{ route('publish.article', $article->id) }}" class="btn btn-success btn-sm">
+                                    Publier
+                                </a>
+                            @endif
                         @endif
                     @endcan
 
