@@ -11,6 +11,7 @@ use App\Category;
 use App\Issue;
 use App\Comment;
 use App\Bops;
+use Auth;
 use Session;
 use Parsedown;
 
@@ -113,7 +114,9 @@ class PagesController extends Controller
 
     public function getBops()
     {
-        $bops = Bops::where('status', 'published')->orderBy('id', 'desc')->get();
+        $bops = Bops::where('status', 'published')->get();
+        $latests = $bops->sortByDesc('created_at')->take(5);
+        $bests = $bops->sortByDesc('likes')->take(5);
 
         $uvs = [];  
         foreach ($bops as $bop) {
@@ -124,7 +127,7 @@ class PagesController extends Controller
             }
         }
 
-        return view('pages.bops')->withBops($bops)->withUvs($uvs);
+        return view('pages.bops')->withBops($bops)->withLatests($latests)->withBests($bests)->withUvs($uvs);
     }
 
     public function postBops(Request $request)
@@ -143,6 +146,24 @@ class PagesController extends Controller
         
         Session::flash('success', "Votre Bops a été envoyée. Elle sera publiée une fois vérifiée.");
         return redirect('/bops'); 
+    }
+
+    public function likeBops(Request $request, $id)
+    {   
+        $bops = Bops::find($id);
+        $bops->users()->sync(Auth::user()->id, false);
+        $bops->likes = $bops->users()->count();
+        $bops->save();
+        return redirect('/bops');
+    }
+
+    public function unlikeBops(Request $request, $id)
+    {   
+        $bops = Bops::find($id);
+        $bops->users()->detach(Auth::user()->id);
+        $bops->likes = $bops->users()->count();
+        $bops->save();
+        return redirect('/bops');
     }
 
     public function getSpotted()
