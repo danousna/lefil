@@ -18,32 +18,81 @@
                 <div class="div-bubble my-4 p-4">
                     <h4 class="mb-3">Les dernières Bop's :</h4>
 
-                    <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                        @foreach ($bops as $bop)
-                            <tr>
-                                <td class="px-0 pb-0" style="border: none !important;">
-                                    <dl class="row my-0 py-0">
-                                        <dt class="col-sm-1">{{ $bop->uv }}</dt>
-                                        <dd class="col-sm-10">{{ $bop->body }}</dd>
-                                    </dl>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0 pt-0" style="border: none !important;">
-                                    <?php 
-                                        $datetime = explode(' ', $bop->created_at); 
-                                        $date = explode('-', $datetime[0]);
-                                        $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
-                                    ?>
-                                    <small class="text-muted">le {{ $date_formatted.' à '.$datetime[1] }}</small>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    </div>
+                    @foreach ($latests as $bop)
+                        <div id="{{ $bop->id }}">
+                            <b>{{ $bop->uv }}</b> : {{ $bop->body }}
+                            <br>
+                            <?php 
+                                $datetime = explode(' ', $bop->created_at); 
+                                $date = explode('-', $datetime[0]);
+                                $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
+                            ?>
+                            @auth
+                                @if (Auth::user()->likes()->get()->contains($bop))
+                                    <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                        <small class="text-muted">{{ $date_formatted }}</small>
+                                        {{ method_field('PUT') }}
+                                    </form>
+                                @else 
+                                    <form method="POST" action="{{ route('pages.likeBops', $bop->id) }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                        <small class="text-muted">{{ $date_formatted }}</small>
+                                        {{ method_field('PUT') }}
+                                    </form>
+                                @endif
+                            @endauth
+                            @guest
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Connectez vous">
+                                    <button class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                </span>
+                                <small class="text-muted">{{ $date_formatted }}</small>
+                            @endguest
+                        </div>
+                        <br>
+                    @endforeach
+                </div>
+
+                <div class="div-bubble my-4 p-4">
+                    <h4 class="mb-3">Les meilleures Bop's :</h4>
+
+                    @foreach ($bests as $bop)
+                        <div id="{{ $bop->id }}">
+                            <b>{{ $bop->uv }}</b> : {{ $bop->body }}
+                            <br>
+                            <?php 
+                                $datetime = explode(' ', $bop->created_at); 
+                                $date = explode('-', $datetime[0]);
+                                $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
+                            ?>
+                            @auth
+                                @if (Auth::user()->likes()->get()->contains($bop))
+                                    <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                        <small class="text-muted">{{ $date_formatted }}</small>
+                                        {{ method_field('PUT') }}
+                                    </form>
+                                @else 
+                                    <form method="POST" action="{{ route('pages.likeBops', $bop->id) }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                        <small class="text-muted">{{ $date_formatted }}</small>
+                                        {{ method_field('PUT') }}
+                                    </form>
+                                @endif
+                            @endauth
+                            @guest
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Connectez vous">
+                                    <button class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                </span>
+                                <small class="text-muted">{{ $date_formatted }}</small>
+                            @endguest
+                        </div>
+                        <br>
+                    @endforeach
                 </div>
             </div>
 

@@ -36,6 +36,8 @@ Route::get('numéros/{number}','PagesController@getIssue')->name('pages.issue');
 // Bops
 Route::get('bops', 'PagesController@getBops')->name('pages.bops');
 Route::post('bops', 'PagesController@postBops')->name('pages.bops');
+Route::put('bops/{id}', 'PagesController@likeBops')->name('pages.likeBops')->middleware('auth');
+Route::put('bops/{id}/unlike', 'PagesController@unlikeBops')->name('pages.unlikeBops')->middleware('auth');
 
 // Spotted
 Route::get('spotted', 'PagesController@getSpotted')->name('pages.spotted');
