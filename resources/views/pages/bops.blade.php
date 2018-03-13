@@ -15,50 +15,92 @@
     <div class="container">
         <div class="row py-4 bg-bubble">
             <div class="col-md-8 col-11 mx-auto">
-                <div class="div-bubble my-4 p-4">
-                    <h4 class="mb-3">Les dernières Bop's :</h4>
+                <div class="row mx-auto my-4">
+                    <div class="col-md-6 col-12 mx-auto p-4 div-bubble">
+                        <h4 class="mb-3 title">Les dernières Bop's</h4>
 
-                    @foreach ($latests as $bop)
-                        <div id="{{ $bop->id }}">
-                            <b>{{ $bop->uv }}</b> : {{ $bop->body }}
+                        @foreach ($latests as $bop)
+                            <div id="{{ $bop->id }}">
+                                <b>{{ $bop->uv }}</b> : {{ $bop->body }}
+                                <br>
+                                <?php 
+                                    $datetime = explode(' ', $bop->created_at); 
+                                    $date = explode('-', $datetime[0]);
+                                    $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
+                                ?>
+                                @auth
+                                    @if (Auth::user()->bops_likes()->get()->contains($bop))
+                                        <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                            <small class="text-muted">{{ $date_formatted }}</small>
+                                            {{ method_field('PUT') }}
+                                        </form>
+                                    @else 
+                                        <form method="POST" action="{{ route('pages.likeBops', $bop->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                            <small class="text-muted">{{ $date_formatted }}</small>
+                                            {{ method_field('PUT') }}
+                                        </form>
+                                    @endif
+                                @endauth
+                                @guest
+                                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Connectez vous">
+                                        <button class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                    </span>
+                                    <small class="text-muted">{{ $date_formatted }}</small>
+                                @endguest
+                            </div>
                             <br>
-                            <?php 
-                                $datetime = explode(' ', $bop->created_at); 
-                                $date = explode('-', $datetime[0]);
-                                $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
-                            ?>
-                            @auth
-                                @if (Auth::user()->likes()->get()->contains($bop))
-                                    <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
-                                        <small class="text-muted">{{ $date_formatted }}</small>
-                                        {{ method_field('PUT') }}
-                                    </form>
-                                @else 
-                                    <form method="POST" action="{{ route('pages.likeBops', $bop->id) }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
-                                        <small class="text-muted">{{ $date_formatted }}</small>
-                                        {{ method_field('PUT') }}
-                                    </form>
-                                @endif
-                            @endauth
-                            @guest
-                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Connectez vous">
-                                    <button class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
-                                </span>
-                                <small class="text-muted">{{ $date_formatted }}</small>
-                            @endguest
-                        </div>
-                        <br>
-                    @endforeach
+                        @endforeach
+                    </div>
+
+                    <div class="col-md-6 col-12 mx-auto p-4 div-bubble">
+                        <h4 class="mb-3 title">Le podium</h4>
+
+                        @foreach ($bests as $bop)
+                            <div id="{{ $bop->id }}">
+                                <b>{{ $bop->uv }}</b> : {{ $bop->body }}
+                                <br>
+                                <?php 
+                                    $datetime = explode(' ', $bop->created_at); 
+                                    $date = explode('-', $datetime[0]);
+                                    $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
+                                ?>
+                                @auth
+                                    @if (Auth::user()->bops_likes()->get()->contains($bop))
+                                        <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                            <small class="text-muted">{{ $date_formatted }}</small>
+                                            {{ method_field('PUT') }}
+                                        </form>
+                                    @else 
+                                        <form method="POST" action="{{ route('pages.likeBops', $bop->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                            <small class="text-muted">{{ $date_formatted }}</small>
+                                            {{ method_field('PUT') }}
+                                        </form>
+                                    @endif
+                                @endauth
+                                @guest
+                                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Connectez vous">
+                                        <button class="btn btn-like"><i class="far fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
+                                    </span>
+                                    <small class="text-muted">{{ $date_formatted }}</small>
+                                @endguest
+                            </div>
+                            <br>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="div-bubble my-4 p-4">
-                    <h4 class="mb-3">Les meilleures Bop's :</h4>
+                    <h4 class="mb-3 title">Toutes les Bop's</h4>
 
-                    @foreach ($bests as $bop)
+                    @foreach ($bops as $bop)
                         <div id="{{ $bop->id }}">
                             <b>{{ $bop->uv }}</b> : {{ $bop->body }}
                             <br>
@@ -68,7 +110,7 @@
                                 $date_formatted = $date[2].'/'.$date[1].'/'.$date[0];
                             ?>
                             @auth
-                                @if (Auth::user()->likes()->get()->contains($bop))
+                                @if (Auth::user()->bops_likes()->get()->contains($bop))
                                     <form method="POST" action="{{ route('pages.unlikeBops', $bop->id) }}">
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-like"><i class="fas fa-thumbs-up mr-1"></i> <span>{{ $bop->users->count() }} j'aime</span></button>
@@ -98,7 +140,7 @@
 
             <div class="col-md-4 col-11 mx-auto">
                 <div class="div-bubble my-4 p-4">
-                    <h4 class="mb-3">Soumettre une Bop's :</h4>
+                    <h4 class="mb-3 title">Soumettre une Bop's</h4>
                     <form method="POST" action="{{ route('pages.bops') }}">
                         {{ csrf_field() }}
 
@@ -114,7 +156,7 @@
                     </form>
                 </div>
                 <div class="div-bubble my-4 p-4">
-                    <h4 class="mb-3">Statistiques :</h4>
+                    <h4 class="mb-3 title">Statistiques</h4>
                     <span class="d-block mb-3">Il y au total <b>{{ $bops->count() }}</b> Bop's.</span>
                     <h5 class="mb-2">Par UVs :</h5>
                     @foreach ($uvs as $uv => $value)

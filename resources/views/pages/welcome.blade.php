@@ -126,7 +126,7 @@
                 <div class="col-md-4 col-12 mx-auto">
 
                     <div class="div-bubble my-4 p-4">
-                        <h2 class="mb-3"><a href="/bops">Bop's :</a></h2>
+                        <h4 class="mb-3 title"><a href="/bops">Bop's</a></h4>
                         @foreach ($bops as $bop)
                             <div class="media" style="font-size: 16px">
                                 <span class="d-flex mr-2"><b>{{ $bop->uv }} :</b></span>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="div-bubble my-4 p-4">
-                        <h2 class="mb-3">Commentaires récents :</h2>
+                        <h4 class="mb-3 title">Commentaires récents</h4>
                         @foreach ($comments as $comment)
                             <?php $date = explode('-', substr($comment->article->created_at, 0, 10)); ?>
                             <div>
@@ -165,7 +165,7 @@
                         @endforeach
                     </div>
                     <div class="div-bubble my-4 p-4">
-                        <h2 class="mb-3">Numéros :</h2>
+                        <h4 class="mb-3 title">Numéros</h4>
                         @foreach ($issues as $issue)
                             <?php $date = explode('-', explode(' ', $issue->release_date)[0]); ?>
                             <div>
@@ -181,7 +181,7 @@
                         @endforeach
                     </div>
                     <div class="div-bubble my-4 p-4">
-                        <h2 class="mb-3">Rubriques :</h2>
+                        <h4 class="mb-3 title">Rubriques</h4>
                         @foreach ($categories as $category)
                             <a href="{{ route('pages.category', $category->id) }}"><i>{{ $category->name }}</i></a><br>
                         @endforeach

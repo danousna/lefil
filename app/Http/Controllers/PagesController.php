@@ -11,6 +11,7 @@ use App\Category;
 use App\Issue;
 use App\Comment;
 use App\Bops;
+use App\Spotted;
 use Auth;
 use Session;
 use Parsedown;
@@ -115,8 +116,8 @@ class PagesController extends Controller
     public function getBops()
     {
         $bops = Bops::where('status', 'published')->get();
-        $latests = $bops->sortByDesc('created_at')->take(5);
-        $bests = $bops->sortByDesc('likes')->take(5);
+        $latests = $bops->sortByDesc('created_at')->take(3);
+        $bests = $bops->sortByDesc('likes')->take(3);
 
         $uvs = [];  
         foreach ($bops as $bop) {
@@ -168,7 +169,45 @@ class PagesController extends Controller
 
     public function getSpotted()
     {
-        return view('pages.spotted');
+        $spotted = Spotted::where('status', 'published')->get();
+        $latests = $spotted->sortByDesc('created_at')->take(5);
+        // $bests = $spotted->sortByDesc('likes')->take(5);
+
+        return view('pages.spotted')->withSpotted($spotted)->withLatests($latests); //->withBests($bests);
+    }
+
+    public function postSpotted(Request $request)
+    {
+        $this->validate($request, array(
+            'body'      => 'required',
+        ));
+
+        $spotted = new Spotted;
+
+        $spotted->body = $request->body;
+
+        $spotted->save();
+        
+        Session::flash('success', "Meessage envoyé. Il sera publié une fois vérifié.");
+        return redirect('/spotted');
+    }
+
+    public function likeSpotted(Request $request, $id)
+    {   
+        $spotted = Spotted::find($id);
+        $spotted->users()->sync(Auth::user()->id, false);
+        $spotted->likes = $spotted->users()->count();
+        $spotted->save();
+        return redirect('/spotted');
+    }
+
+    public function unlikeSpotted(Request $request, $id)
+    {   
+        $spotted = Spotted::find($id);
+        $spotted->users()->detach(Auth::user()->id);
+        $spotted->likes = $spotted->users()->count();
+        $spotted->save();
+        return redirect('/spotted');
     }
 
     public function getUser($username) 

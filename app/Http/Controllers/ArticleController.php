@@ -44,7 +44,7 @@ class ArticleController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $categories = Category::all();
-        $issues = Issue::all()->where('status', 'draft');
+        $issues = Issue::all();
 
         $Parsedown = new Parsedown();
         $mdhelp = $Parsedown->text(File::get(public_path('cheatsheet.md')));
