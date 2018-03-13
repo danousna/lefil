@@ -41,6 +41,9 @@ Route::put('bops/{id}/unlike', 'PagesController@unlikeBops')->name('pages.unlike
 
 // Spotted
 Route::get('spotted', 'PagesController@getSpotted')->name('pages.spotted');
+Route::post('spotted', 'PagesController@postSpotted')->name('pages.spotted');
+Route::put('spotted/{id}', 'PagesController@likeSpotted')->name('pages.likeSpotted')->middleware('auth');
+Route::put('spotted/{id}/unlike', 'PagesController@unlikeSpotted')->name('pages.unlikeSpotted')->middleware('auth');
 
 // User
 Route::get('user/{username}', ['as' => 'pages.user', 'uses' => 'PagesController@getUser'])->where('username', '[\w\pL\d\-\_]+');
@@ -112,6 +115,9 @@ Route::post('articles/{id}/comment/{reply_comment_id}', 'CommentController@store
 
 // Bops
 Route::resource('bops_manager', 'BopsController');
+
+// Spotted
+Route::resource('spotted_manager', 'SpottedController');
 
 // Search
 Route::post('search', 'SearchController@results')->name('search.results');
