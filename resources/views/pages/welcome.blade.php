@@ -13,7 +13,7 @@
                 <div class="row py-4">
                     <div class="col-md-8 col-12 mx-auto">
                         <?php $date = explode('-', substr($articles->first()->created_at, 0, 10)); ?>
-                        <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}');" @endif>
+                        <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}'); background-size: cover; background-position: 50% 50px; background-repeat: no-repeat;" @endif>
                             <div class="bg-white p-4 borders-top">
                                 <h2 class="title">
                                     {{ $articles->first()->title }}
