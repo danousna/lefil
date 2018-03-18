@@ -33,10 +33,16 @@
                 
                 <br>
                 
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="submit" class="btn btn-primary ladda-button"><span class="label">Envoyer</span> <span class="spinner"></span></button>
             </form>
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+    
+    <script src="{{ asset('js/btn_load.js') }}"></script>
 
 @endsection
