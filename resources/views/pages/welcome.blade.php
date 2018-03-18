@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row py-4">
                     <div class="col-md-8 col-12 mx-auto">
-                        <?php $date = explode('-', substr($articles->first()->created_at, 0, 10)); ?>
+                        <?php $date = explode('-', substr($articles->first()->published_at, 0, 10)); ?>
                         <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}'); background-size: cover; background-position: 50% 50px; background-repeat: no-repeat;" @endif>
                             <div class="bg-white p-4 borders-top">
                                 <h2 class="title">
@@ -35,7 +35,7 @@
                                         </span>
                                     @endif
                                     |
-                                    {{ date('d/m/Y', strtotime($articles->first()->created_at)) }}
+                                    {{ date('d/m/Y', strtotime($articles->first()->published_at)) }}
                                 </h4>
                             </div>
                         </a>
@@ -43,7 +43,7 @@
             
                     <div class="col-md-4 col-12 mx-auto">
                         @foreach ($articles->slice(1, 2) as $article)
-                            <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
+                            <?php $date = explode('-', substr($article->published_at, 0, 10)); ?>
                             <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
                                 <div class="bg-white p-3 borders-full">
                                     <h4 class="title">{{ $article->title }}</h4>
@@ -64,7 +64,7 @@
                                             </span>
                                         @endif
                                         |
-                                        {{ date('d/m/Y', strtotime($article->created_at)) }}
+                                        {{ date('d/m/Y', strtotime($article->published_at)) }}
                                     </small>
                                 </div>
                             </a>
@@ -80,7 +80,7 @@
                     <div class="div-bubble my-4 p-4">                
                         @if ($articles->count() > 3) 
                             @foreach ($articles->slice(3, $articles->count()) as $article)
-                                <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
+                                <?php $date = explode('-', substr($article->published_at, 0, 10)); ?>
 
                                 <div class="article">
                                     <h5 class="mb-0">
@@ -107,7 +107,7 @@
                                             </a>
                                         @endif
                                         |
-                                        {{ date('d/m/Y', strtotime($article->created_at)) }}
+                                        {{ date('d/m/Y', strtotime($article->published_at)) }}
 
                                         @if ($article->comments()->count() > 0)
                                             |

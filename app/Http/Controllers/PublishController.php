@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use Carbon\Carbon;
 use App\Article;
 use App\Category;
 
@@ -33,6 +34,7 @@ class PublishController extends Controller
         // President can publish everything
         if (Auth::user()->hasRole(['admin', 'president'])) {
             $article->status = 'published';
+            $article->published_at = Carbon::now();
             $article->save(); 
             Session::flash('success', 'Article publié');
             return redirect()->route('articles.show', $id);
@@ -45,6 +47,7 @@ class PublishController extends Controller
                 return redirect('/');
             } else {
                 $article->status = 'published';
+                $article->published_at = Carbon::now();
                 $article->save();           
                 Session::flash('success', 'Article publié');
                 return redirect()->route('articles.show', $id);

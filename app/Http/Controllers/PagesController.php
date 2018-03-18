@@ -20,7 +20,7 @@ class PagesController extends Controller
 {
     public function getIndex() 
     {
-        $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(20);
+        $articles = Article::where('status', 'published')->orderBy('published_at', 'desc')->paginate(20);
         $categories = Category::all();
         $issues = Issue::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         $comments = Comment::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();

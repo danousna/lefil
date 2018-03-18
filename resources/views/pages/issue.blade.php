@@ -12,8 +12,8 @@
                 <div class="div-bubble my-4 p-4">
                     <h2 class="mb-4">n°{{ $issue->number }}</b> {{($issue->titre != "") ? "- ".$issue->titre : "" }}</h2>          
                     @if ($issue->articles->where('status', 'published')->count() > 0)
-                        @foreach ($issue->articles->where('status', 'published') as $article)
-                            <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
+                        @foreach ($issue->articles->where('status', 'published')->sortBy('published_at') as $article)
+                            <?php $date = explode('-', substr($article->published_at, 0, 10)); ?>
 
                             <div class="article">
                                 <h4 class="mb-0">
@@ -36,7 +36,7 @@
                                         </a>
                                     @endif
                                     |
-                                    {{ date('d/m/Y', strtotime($article->created_at)) }}
+                                    {{ date('d/m/Y', strtotime($article->published_at)) }}
                                 </small>
                             </div>
                             <hr>
