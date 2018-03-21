@@ -1,28 +1,22 @@
-# Le coup de jeune du Fil
+# Documentation
 
-## Avancée du projet
+## Technologies utilisées :
 
-### Les technologies utilisées :
-
-- Frontend : Bootstrap + Jquery.
-- Backend : On passe à Laravel 5.5.
+- Frontend : Bootstrap 4 + Jquery
+- Backend : Laravel 5.6
 
 ## Installation
 
-Il faut tout d'abord un serveur Apache ainsi que mysql installés.
+Voir la documentation de Laravel :
 
-Afin d'installer Laravel il faut que votre version PHP remplissent ces conditions :
+[https://laravel.com/docs/5.6/installation](https://laravel.com/docs/5.6/installation)
 
-- PHP >= 7.0.0
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+À installer :
 
-Se placer dans le répertoire du projet.
+- php-curl pour Algolia
+- php-gd pour Image Intervention
 
-Installer les dépendances :
+Se placer dans le répertoire du projet et installer les dépendances :
 
 `composer install`
 
@@ -34,7 +28,7 @@ Il faut ensuite générer une nouvelle clé pour l'application grace à la comma
 
 Toujours dans le fichier `.env`, remplacer `DB_DATABASE`, `DB_USERNAME` et `DB_PASSWORD` par vos informations.
 
-Vous pouvez ensuite executer la commande suivante pour mettre en place toutes les tables nécessaires dans la base de données : 
+Vous pouvez ensuite executer la commande suivante pour mettre en place toutes les tables nécessaires dans votre base de données : 
 
 `php artisan migrate`
 
@@ -72,6 +66,6 @@ class AdminsSeeder extends Seeder
 }
 ```
 
-Vous pouvez maintenant executer cette commande :
+Vous pouvez maintenant executer cette commande pour populer la base de données :
 
-`php artisan db:seed` qui permettra d'avoir des jeux de données déjà présentes par défaut.
+`php artisan db:seed`
