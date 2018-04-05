@@ -11,7 +11,7 @@
             <h4>Gestion des bops</h4>              
             <p>
                 <h5>Attention :</h5> 
-                Avant de publier une bops, assurez vous que le <b>nom de l'uv est valide</b>, sinon les <b>statistiques</b> des bops ne fonctionneront pas correctement.<br><small>(Un nom d'uv valide à <b>deux lettres majuscules suivis d'un numéro</b>. Example : EN21, MT90 etc...)</small>
+                Avant de publier une bops, assurez vous que le <b>nom de l'uv est valide</b>, sinon les <b>statistiques</b> des bops ne fonctionneront pas correctement.<br><small>(Un nom d'uv valide à <b>deux lettres majuscules suivis d'un numéro</b>. Exemple : EN21, MT90)</small>
             </p>
             <div class="table-responsive">
             <table class="table">
