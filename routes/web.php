@@ -122,4 +122,8 @@ Route::resource('spotted_manager', 'SpottedController');
 // Search
 Route::post('search', 'SearchController@results')->name('search.results');
 
+// Heroes
+Route::get('heroes', 'HeroController@index')->name('heroes.index');
+Route::post('heroes', 'HeroController@store')->name('heroes.store');
+
 

@@ -8,67 +8,95 @@
 @if ($articles->count() > 0)
     <div class="bg-bubble">
         <header class="masthead">
-            <div class="bg-blurry" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/blur-'.$articles->first()->image) }}');" @endif></div>
+            <?php $premier = $heroes->where('type', 'premier')->first()->article; ?>
+            <?php $second = $heroes->where('type', 'second')->first()->article; ?>
+            <?php $dernier = $heroes->where('type', 'dernier')->first()->article; ?>
+
+            <div class="bg-blurry" @if ($premier->image != "") style="background-image: url('{{ asset('storage/blur-'.$premier->image) }}');" @endif></div>
             <div class="container">
                 <div class="row py-4">
                     <div class="col-md-8 col-12 mx-auto">
-                        <?php $date = explode('-', substr($articles->first()->created_at, 0, 10)); ?>
-                        <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $articles->first()->slug }}" @if ($articles->first()->image != "") style="background-image: url('{{ asset('storage/'.$articles->first()->image) }}'); background-size: cover; background-position: 50% 50px; background-repeat: no-repeat;" @endif>
+                        <?php $date = explode('-', substr($premier->created_at, 0, 10)); ?>
+                        <a class="d-block div-bubble hero hero-lg mb-3 mt-0 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $premier->slug }}" @if ($premier->image != "") style="background-image: url('{{ asset('storage/'.$premier->image) }}'); background-size: cover; background-position: 50% 50px; background-repeat: no-repeat;" @endif>
                             <div class="bg-white p-4 borders-top">
                                 <h2 class="title">
-                                    {{ $articles->first()->title }}
+                                    {{ $premier->title }}
                                 </h2>
                                 <h4 class="font-weight-normal">
-                                    @if ($articles->first()->issue_id)
-                                        <b>{{ $articles->first()->issue->number }}</b>
+                                    @if ($premier->issue_id)
+                                        <b>{{ $premier->issue->number }}</b>
                                         |
                                     @endif
-                                    {{ $articles->first()->category->name }}
+                                    {{ $premier->category->name }}
                                     |
-                                    @if ($articles->first()->anonymous)
+                                    @if ($premier->anonymous)
                                         <span>  
                                             Anonyme
                                         </span>
                                     @else    
-                                        <span class="@if ($articles->first()->user->hasAnyRole('admin|president|member')) text-success @endif">  
-                                            {{ $articles->first()->user->username }}
+                                        <span class="@if ($premier->user->hasAnyRole('admin|president|member')) text-success @endif">  
+                                            {{ $premier->user->username }}
                                         </span>
                                     @endif
                                     |
-                                    {{ date('d/m/Y', strtotime($articles->first()->created_at)) }}
+                                    {{ date('d/m/Y', strtotime($premier->created_at)) }}
                                 </h4>
                             </div>
                         </a>
                     </div>
             
                     <div class="col-md-4 col-12 mx-auto">
-                        @foreach ($articles->slice(1, 2) as $article)
-                            <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
-                            <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $article->slug }}">
-                                <div class="bg-white p-3 borders-full">
-                                    <h4 class="title">{{ $article->title }}</h4>
-                                    <small>
-                                        @if ($article->issue_id)
-                                            <b>{{ $article->issue->number }}</b>
-                                            |
-                                        @endif
-                                        {{ $article->category->name }}
+                        <?php $date = explode('-', substr($second->created_at, 0, 10)); ?>
+                        <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $second->slug }}">
+                            <div class="bg-white p-3 borders-full">
+                                <h4 class="title">{{ $second->title }}</h4>
+                                <small>
+                                    @if ($second->issue_id)
+                                        <b>{{ $second->issue->number }}</b>
                                         |
-                                        @if ($article->anonymous)
-                                            <span>  
-                                                Anonyme
-                                            </span>
-                                        @else    
-                                            <span class="@if ($article->user->hasAnyRole('admin|president|member')) text-success @endif">  
-                                                {{ $article->user->username }}
-                                            </span>
-                                        @endif
+                                    @endif
+                                    {{ $second->category->name }}
+                                    |
+                                    @if ($second->anonymous)
+                                        <span>  
+                                            Anonyme
+                                        </span>
+                                    @else    
+                                        <span class="@if ($second->user->hasAnyRole('admin|president|member')) text-success @endif">  
+                                            {{ $second->user->username }}
+                                        </span>
+                                    @endif
+                                    |
+                                    {{ date('d/m/Y', strtotime($second->created_at)) }}
+                                </small>
+                            </div>
+                        </a>
+
+                        <?php $date = explode('-', substr($dernier->created_at, 0, 10)); ?>
+                        <a class="d-block div-bubble hero mb-3 px-0" href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $dernier->slug }}">
+                            <div class="bg-white p-3 borders-full">
+                                <h4 class="title">{{ $dernier->title }}</h4>
+                                <small>
+                                    @if ($dernier->issue_id)
+                                        <b>{{ $dernier->issue->number }}</b>
                                         |
-                                        {{ date('d/m/Y', strtotime($article->created_at)) }}
-                                    </small>
-                                </div>
-                            </a>
-                        @endforeach
+                                    @endif
+                                    {{ $dernier->category->name }}
+                                    |
+                                    @if ($dernier->anonymous)
+                                        <span>  
+                                            Anonyme
+                                        </span>
+                                    @else    
+                                        <span class="@if ($dernier->user->hasAnyRole('admin|president|member')) text-success @endif">  
+                                            {{ $dernier->user->username }}
+                                        </span>
+                                    @endif
+                                    |
+                                    {{ date('d/m/Y', strtotime($dernier->created_at)) }}
+                                </small>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -79,7 +107,7 @@
                 <div class="col-md-8 col-12 mx-auto">
                     <div class="div-bubble my-4 p-4">                
                         @if ($articles->count() > 3) 
-                            @foreach ($articles->slice(3, $articles->count()) as $article)
+                            @foreach ($articles as $article)
                                 <?php $date = explode('-', substr($article->created_at, 0, 10)); ?>
 
                                 <div class="article">

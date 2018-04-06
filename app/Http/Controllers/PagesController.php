@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMessage;
 use App\User;
 use App\Article;
+use App\Hero;
 use App\Category;
 use App\Issue;
 use App\Comment;
@@ -20,12 +21,14 @@ class PagesController extends Controller
 {
     public function getIndex() 
     {
+        $heroes = Hero::all();
         $articles = Article::where('status', 'published')->orderBy('id', 'desc')->paginate(20);
         $categories = Category::all();
         $issues = Issue::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         $comments = Comment::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         $bops = Bops::where('status', 'published')->orderBy('id', 'desc')->take(4)->get();
         return view('pages.welcome')
+            ->withHeroes($heroes)
             ->withArticles($articles)
             ->withIssues($issues)
             ->withCategories($categories)
