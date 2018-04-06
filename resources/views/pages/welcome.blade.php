@@ -141,27 +141,18 @@
                     </div>
 
                     <div class="div-bubble my-4 p-4">
-                        <h4 class="mb-3 title">Commentaires récents</h4>
+                        <h4 class="title">Commentaires récents</h4>
                         @foreach ($comments as $comment)
                             <?php $date = explode('-', substr($comment->article->created_at, 0, 10)); ?>
-                            <div>
-                                <div>
+                            <div class="mt-3">
+                                <div style="font-size: 16px;">
                                     <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $comment->article->slug . '#' . $comment->id }}">{{ $comment->body }}</a>
                                 </div>
-                                <small>
-                                    <b>
-                                        <a href="{{ route('pages.user', $comment->user->username) }}">
-                                            {{ $comment->user->username }}
-                                        </a>
-                                    </b> 
-                                    le {{ date('d/m/y à H:m', strtotime($comment->created_at)) }} 
-                                </small>
-                                <br>
-                                <small>
-                                    <a href="{{ url('/') .'/'. $date[0] .'/'. $date[1] .'/'. $date[2] .'/'. $comment->article->slug }}">{{ substr($comment->article->title, 0, 47) }} {{ (strlen($comment->article->title) > 47) ? "..." : "" }}</a>
+                                <small class="text-muted" style="font-size: 14px;">
+                                    <a href="{{ route('pages.user', $comment->user->username) }}">{{ $comment->user->username }}</a>
+                                    le {{ date('d/m/y à H:m', strtotime($comment->created_at)) }}
                                 </small>
                             </div>
-                            <hr>
                         @endforeach
                     </div>
                     <div class="div-bubble my-4 p-4">
