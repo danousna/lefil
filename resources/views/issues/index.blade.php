@@ -41,9 +41,9 @@
                         <td class="px-0 text-right" style="border: none !important;">
                             <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-secondary btn-sm">Voir</a>
                             <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-secondary btn-sm">Modifier</a>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">Supprimer</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm{{ $issue->id }}">Supprimer</button>
 
-                            <div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteForm{{ $issue->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

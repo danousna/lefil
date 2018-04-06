@@ -72,9 +72,9 @@
                     <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-secondary btn-sm">
                         Modifier
                     </a>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">Supprimer</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm{{ $article->id }}">Supprimer</button>
 
-                    <div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteForm{{ $article->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

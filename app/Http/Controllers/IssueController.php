@@ -184,6 +184,7 @@ class IssueController extends Controller
         Storage::disk('public')->delete($issue->pdf);
 
         $issue->delete();
+
         Session::flash('success', 'Numéro supprimé.');
         return redirect()->route('issues.index');
     }
