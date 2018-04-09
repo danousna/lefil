@@ -66,6 +66,13 @@
     background-color: #999;
 }
 
+.ladda-button[data-loading]::before {
+    position: absolute;
+    left: 110%;
+    color: black;
+    content: "Chargement...";
+}
+
 .ladda-button .spinner {
     position: absolute;
     width: 32px;
