@@ -54,8 +54,7 @@ class PagesController extends Controller
             'message'   => 'required',
         ));
 
-        Mail::to("jeremy.pointel@etu.utc.fr")
-            ->cc("natan.danous@gmail.com")
+        Mail::to("lefil@assos.utc.fr")
             ->send(new ContactMessage($request));
         
         Session::flash('success', "Message envoyé.");
